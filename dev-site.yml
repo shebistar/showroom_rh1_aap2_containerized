@@ -1,5 +1,5 @@
 site:
-  title: AAP2 Containerized
+  title: AAP2 Containerized + Configuration as Code Challenge Red Hat Summit Connect Darmstadt
   url: http://localhost:3000/rhs-build-course/index.html
   start_page: modules::index.adoc
 
@@ -11,12 +11,23 @@ content:
 
 ui:
   bundle:
-    url: https://github.com/rhpds/showroom_theme_rh1/releases/download/v0.0.2/ui-bundle.zip
+    #    url: https://github.com/rhpds/showroom_theme_rh1/releases/download/v0.0.2/ui-bundle.zip
+        url: https://github.com/rhpds/rhdp_showroom_theme/releases/download/v0.0.1/ui-bundle.zip
     snapshot: true
-  supplemental_files: ./content/supplemental-ui
+  supplemental_files: 
+    - path: ./content/supplemental-ui
+    - path: ./content/lib
+    - path: .nojekyll
+    - path: ui.yml
+      contents: "static_files: [ .nojekyll ]"
 
 runtime:
   cache_dir: ./.cache/antora
+
+antora:
+  extensions:
+    - require: ./content/lib/dev-mode.js
+      enabled: true
 
 output:
   dir: ./www

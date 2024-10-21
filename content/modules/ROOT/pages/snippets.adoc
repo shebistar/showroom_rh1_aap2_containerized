@@ -136,7 +136,7 @@ Verify that the application is running by navigating to
 
 http://bastion.{guid}.example.opentlc.com:8500
 
-= Managing an Application from GitHub
+== Managing an Application from GitHub
 
 In the first half of this workshop, we packaged an application into this portable container format manually using rpms.
 In the second half, we will consider that you may want to manage software from GitHub or some kind of software versioning application.
@@ -166,7 +166,7 @@ buildah from registry.access.redhat.com/ubi8/ubi
 
 NOTE: Because you already pulled one image named `ubi-working-container` this one is called `ubi-working-container-1`. 
 
-[#prerequisites]
+[#prerequisites_2]
 == Install Prerequisites
 
 Now that you have a working container, you will use the same process as before installing all the prerequisites, changing config files, and manipulating the contents of this container to be in the desired state.
@@ -230,7 +230,7 @@ ls clumsy-bird
 buildah copy ubi-working-container-1 clumsy-bird /var/www/html
 ----
 
-[#container]
+[#container_2]
 == Enable Container in Background
 
 In the previous section of this lab, you ran the game natively through interactive mode. Because you are now building a web application you will need to run the container in the background and access it through a web address. 
@@ -300,3 +300,4 @@ This is another var, or asciidoc attribute, from `./content/antora.yml` {my_var}
 == Writing your lab
 
 Whatever type of content you are writing we'll refer to your *content* as "your lab" in this document.
+////
