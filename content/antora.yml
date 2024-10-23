@@ -18,6 +18,8 @@ asciidoc:
     ssh_command: ssh devops@bastion.{guid}.example.opentlc.com
     ssh_password: MjU4NDk2
     targethost: bastion.aap2-01.sandbox5.opentlc.com
+    event_name: "Red Hat Summit Connect Darmstadt"
+    lab_name: "Ansible Automation Platform Configuration as Code Challenge"
 
   extensions:
     - ./content/lib/tab-block.js

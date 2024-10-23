@@ -23,7 +23,7 @@ You can view all the collections contained within the bundled installer with the
 
 [source,sh,role=execute,subs=attributes+]
 ----
-export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.4-1-x86_64/collections
+export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/collections
 ----
 
 . Validate the ANSIBLE_COLLECTIONS_PATH is correctly set via `ansible-galaxy list`
@@ -40,13 +40,15 @@ ansible-galaxy collection list
 ----
 Collection                      Version
 ------------------------------- -------
-ansible.containerized_installer 1.2.3
-ansible.controller              4.4.2
-ansible.posix                   1.5.4
-community.crypto                2.15.1
-community.postgresql            3.2.0
-containers.podman               1.10.3
-infra.controller_configuration   2.5.1
+ansible.containerized_installer 2.5.0  
+ansible.controller              4.6.0  
+ansible.gateway_configuration   0.0.1  
+ansible.posix                   1.5.4  
+community.crypto                2.22.0 
+community.postgresql            3.4.0  
+containers.podman               1.15.4 
+infra.ah_configuration          2.0.6  
+infra.controller_configuration  2.9.0  
 ----
 
 [configure]
@@ -168,7 +170,7 @@ controller_inventories:
 
   - name: rh1-demo-inventory
     organization: Default
-    description: Red Hat One Demo App
+    description: {event_name}
 ----
 
 . Create a new file `hosts.yml` and enter the following YAML list

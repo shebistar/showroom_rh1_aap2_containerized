@@ -24,7 +24,7 @@ export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-contain
 
 [source,sh,role=execute,subs=attributes+]
 ----
-cd ~/ansible-automation-platform-containerized-setup-bundle-2.4-1-x86_64
+cd ~/ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64
 ----
 
 . Ensure your ANSIBLE_COLLECTIONS_PATH is set correctly
@@ -37,25 +37,8 @@ By default `ansible` would not be able to find the collections inside the bundle
 
 [source,sh,role=execute,subs=attributes+]
 ----
-export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.4-1-x86_64/collections
+export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/collections
 ----
-
-. Run the installer
-
-+
-
-[source,sh,role=execute,subs=attributes+]
-----
-ansible-playbook -i inventory \
-    ansible.containerized_installer.install \
-    -e GUID={guid}
-----
-+
-[NOTE]
-====
-The final argument is unique to our configuration, as mentioned in the prior module. The `-e GUID={guid}` allows us to dereference the `GUID` var we used in our config-as-code Postinstall files. 
-====
-+
 
 [TIP]
 ====
@@ -78,6 +61,25 @@ tmux attach -t aap2
 ----
 Hopefully, however, this scenario will not arise.
 ====
+
+. Run the installer
+
++
+
+[source,sh,role=execute,subs=attributes+]
+----
+ansible-playbook -i inventory \
+    ansible.containerized_installer.install \
+    -e GUID={guid}
+----
++
+[NOTE]
+====
+The final argument is unique to our configuration, as mentioned in the prior module. The `-e GUID={guid}` allows us to dereference the `GUID` var we used in our config-as-code Postinstall files. 
+====
++
+
+
 
 == Exploring the Installation Process
 
@@ -131,14 +133,26 @@ podman image ls
 .Sample Output
 [source,texinfo]
 ----
-REPOSITORY                                                                 TAG         IMAGE ID      CREATED       SIZE
-registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8       latest      052c0b03fb41  3 months ago  1.72 GB
-registry.redhat.io/ansible-automation-platform-24/hub-web-rhel8            latest      d5ddd9019110  3 months ago  455 MB
-registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8     latest      1c2257d47137  3 months ago  728 MB
-registry.redhat.io/ansible-automation-platform-24/hub-rhel8                latest      54388ad50c3e  3 months ago  700 MB
-registry.redhat.io/ansible-automation-platform-24/controller-rhel8         latest      4a08ce099a01  3 months ago  758 MB
-registry.redhat.io/ansible-automation-platform-24/eda-controller-ui-rhel8  latest      32ace9501637  3 months ago  561 MB
-registry.redhat.io/rhel8/redis-6                                           latest      84a6721d2a6f  4 months ago  301 MB
+REPOSITORY                                                                 TAG         IMAGE ID
+     CREATED      SIZE
+registry.redhat.io/ansible-automation-platform-25/eda-controller-ui-rhel8  latest      4b62ac633
+268  4 weeks ago  482 MB
+registry.redhat.io/ansible-automation-platform-25/hub-web-rhel8            latest      2f6b603ff
+b2b  4 weeks ago  480 MB
+registry.redhat.io/ansible-automation-platform-25/hub-rhel8                latest      480b644e2
+729  4 weeks ago  697 MB
+registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8     latest      a798fe430
+891  4 weeks ago  553 MB
+registry.redhat.io/ansible-automation-platform-25/controller-rhel8         latest      3de4a8039
+84f  4 weeks ago  918 MB
+registry.redhat.io/ansible-automation-platform-25/gateway-rhel8            latest      0f91335fd
+02d  4 weeks ago  517 MB
+registry.redhat.io/ansible-automation-platform-25/gateway-proxy-rhel8      latest      f9b868bc5
+4d1  4 weeks ago  295 MB
+registry.redhat.io/ansible-automation-platform-25/receptor-rhel8           latest      f146268bd
+cf7  4 weeks ago  346 MB
+registry.redhat.io/rhel8/redis-6                                           latest      1e3c9ff29
+583  5 weeks ago  301 MB
 ----
 
 . As the installation progresses the various containers run by `podman` as `systemd` services will come to life.
@@ -153,22 +167,52 @@ podman ps
 .Sample Output (late in the installation with all containers running)
 [source,texinfo]
 ----
-CONTAINER ID  IMAGE                                                                             COMMAND               CREATED         STATUS             PORTS       NAMES
-558d20985b0e  registry.redhat.io/rhel8/redis-6:latest                                           run-redis             51 minutes ago  Up 51 minutes ago              redis
-ce1b3f5b1af3  registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest       /usr/bin/receptor...  50 minutes ago  Up 43 minutes ago              receptor
-e8174b595959  registry.redhat.io/ansible-automation-platform-24/controller-rhel8:latest         /usr/bin/launch_a...  49 minutes ago  Up 43 minutes ago              automation-controller-rsyslog
-9527103dc199  registry.redhat.io/ansible-automation-platform-24/controller-rhel8:latest         /usr/bin/launch_a...  48 minutes ago  Up 43 minutes ago              automation-controller-task
-67550c656f89  registry.redhat.io/ansible-automation-platform-24/controller-rhel8:latest         /usr/bin/launch_a...  48 minutes ago  Up 43 minutes ago              automation-controller-web
-cdf5c870108b  registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8:latest     gunicorn --bind 1...  21 minutes ago  Up 20 minutes ago              automation-eda-api
-ad4658314bf5  registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8:latest     daphne -b 127.0.0...  21 minutes ago  Up 20 minutes ago              automation-eda-daphne
-4cb9d1393bc4  registry.redhat.io/ansible-automation-platform-24/eda-controller-ui-rhel8:latest  /bin/sh -c nginx ...  21 minutes ago  Up 20 minutes ago              automation-eda-web
-1bf7818b5c01  registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8:latest     aap-eda-manage rq...  21 minutes ago  Up 20 minutes ago              automation-eda-worker-1
-4fe655d086bf  registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8:latest     aap-eda-manage rq...  21 minutes ago  Up 20 minutes ago              automation-eda-worker-2
-e581c53b554c  registry.redhat.io/ansible-automation-platform-24/hub-rhel8:latest                pulp-api              20 minutes ago  Up 18 minutes ago              automation-hub-api
-fa165ebe3672  registry.redhat.io/ansible-automation-platform-24/hub-rhel8:latest                pulp-content          19 minutes ago  Up 17 minutes ago              automation-hub-content
-018b41b8c61c  registry.redhat.io/ansible-automation-platform-24/hub-web-rhel8:latest            nginx -g daemon o...  19 minutes ago  Up 17 minutes ago              automation-hub-web
-68aefbf7b4c6  registry.redhat.io/ansible-automation-platform-24/hub-rhel8:latest                pulp-worker           19 minutes ago  Up 17 minutes ago              automation-hub-worker-1
-40234e5517c4  registry.redhat.io/ansible-automation-platform-24/hub-rhel8:latest                pulp-worker           19 minutes ago  Up 17 minutes ago              automation-hub-worker-2
+CONTAINER ID  IMAGE
+COMMAND               CREATED         STATUS         PORTS       NAMES
+b1f1de0e3519  registry.redhat.io/rhel8/redis-6:latest
+run-redis             31 minutes ago  Up 31 minutes              redis-unix
+d2f065c8fd9d  registry.redhat.io/rhel8/redis-6:latest
+run-redis             30 minutes ago  Up 21 minutes              redis-tcp
+a164fb918c2a  registry.redhat.io/ansible-automation-platform-25/gateway-proxy-rhel8:latest
+/usr/bin/envoy --...  19 minutes ago  Up 17 minutes              automation-gateway-proxy
+fbf095e30270  registry.redhat.io/ansible-automation-platform-25/gateway-rhel8:latest
+/usr/bin/supervis...  19 minutes ago  Up 17 minutes              automation-gateway
+50b6d52921d5  registry.redhat.io/ansible-automation-platform-25/receptor-rhel8:latest
+/usr/bin/receptor...  17 minutes ago  Up 17 minutes              receptor
+2641a41b48fc  registry.redhat.io/ansible-automation-platform-25/controller-rhel8:latest
+/usr/bin/launch_a...  16 minutes ago  Up 10 minutes              automation-controller-rsyslog
+968edfc8178e  registry.redhat.io/ansible-automation-platform-25/controller-rhel8:latest
+/usr/bin/launch_a...  15 minutes ago  Up 10 minutes              automation-controller-task
+9e536c24c911  registry.redhat.io/ansible-automation-platform-25/controller-rhel8:latest
+/usr/bin/launch_a...  15 minutes ago  Up 10 minutes              automation-controller-web
+26d6ca6242ee  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest
+gunicorn --bind 1...  9 minutes ago   Up 8 minutes               automation-eda-api
+13ec8310f32a  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest
+daphne --bind 127...  9 minutes ago   Up 7 minutes               automation-eda-daphne
+c7d27393d224  registry.redhat.io/ansible-automation-platform-25/eda-controller-ui-rhel8:latest
+/bin/sh -c nginx ...  9 minutes ago   Up 7 minutes               automation-eda-web
+a9d85cb813ce  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest
+aap-eda-manage rq...  9 minutes ago   Up 7 minutes               automation-eda-worker-1
+208128ff9c02  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest
+aap-eda-manage rq...  9 minutes ago   Up 7 minutes               automation-eda-worker-2
+72eb908cdcdf  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest
+aap-eda-manage rq...  8 minutes ago   Up 7 minutes               automation-eda-activation-worke
+r-1
+283d95115938  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest
+aap-eda-manage rq...  8 minutes ago   Up 7 minutes               automation-eda-activation-worke
+r-2
+8d50e4d49894  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest
+aap-eda-manage sc...  8 minutes ago   Up 7 minutes               automation-eda-scheduler
+4f1b74ac6a76  registry.redhat.io/ansible-automation-platform-25/hub-rhel8:latest
+pulpcore-api --na...  7 minutes ago   Up 4 minutes               automation-hub-api
+cf6ed27f9d55  registry.redhat.io/ansible-automation-platform-25/hub-rhel8:latest
+pulpcore-content ...  6 minutes ago   Up 4 minutes               automation-hub-content
+f4caa51341ab  registry.redhat.io/ansible-automation-platform-25/hub-web-rhel8:latest
+/bin/sh -c nginx ...  6 minutes ago   Up 4 minutes               automation-hub-web
+46ad271f5270  registry.redhat.io/ansible-automation-platform-25/hub-rhel8:latest
+pulpcore-worker       6 minutes ago   Up 4 minutes               automation-hub-worker-1
+4931f5365d5d  registry.redhat.io/ansible-automation-platform-25/hub-rhel8:latest
+pulpcore-worker       6 minutes ago   Up 4 minutes               automation-hub-worker-2
 ----
 
 == Summary
@@ -177,27 +221,13 @@ We have now, hopefully, successfully run the deployer and installed Containerize
 
 The next module will guide us through an exploration of running a `job_template` on our new installation but feel free to explore the components:
 
-[WARNING]
-====
-The current Tech Preview does *not* have inbuilt support for TLS, the following end-points whilst accessible will generate a Browser Warning. Until full support is added one possible workaround would be to terminate TLS on a reverse proxy such as traefik.
-====
 
 [cols="2,3,2,2"]
 |===
 |Service |URL |Login |Password
 
-| Automation Controller
+| Automation Gateway
 |`http://aap2.{subdomain}:80`
-| `admin`
-| `r3dh4t1!`
-
-| Automation Hub
-|`http://aap2.{subdomain}:81`
-| `admin`
-| `r3dh4t1!`
-
-| Automation EDA
-|`http://aap2.{subdomain}:82`
 | `admin`
 | `r3dh4t1!`
 

@@ -117,9 +117,8 @@ Starting galaxy role install process
 Starting galaxy collection install process
 Process install dependency map
 Starting collection install process
-Downloading https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/community-postgresql-3.2.0.tar.gz to /home/devops/.ansible/tmp/ansible-local-436544_pd24uz/tmpsp8y6798/community-postgresql-3.2.0-b6zf4udj
+Downloading https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/community-postgresql-3.2.0.tar.gz to /home/devops/.ansible/tmp/ansible-local-4317wlygz9ue/tmp4sdy5sio/community-postgresql-3.2.0-c08ov_a8
 Installing 'community.postgresql:3.2.0' to '/home/devops/.ansible/collections/ansible_collections/community/postgresql'
-community.postgresql:3.2.0 was installed successfully
 ----
 
 . Finally, run the installer playbook which simply acts as a wrapper around the role you just installed.
