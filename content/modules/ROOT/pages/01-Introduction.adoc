@@ -61,27 +61,27 @@ image::topology.png[Lab Topology,align="center",width="100%"]
 |Server |Operating System|External Interface|Role
 
 |bastion
-|RHEL 9.3
+|RHEL 9.4
 |Yes
 |DevOps Server - you will primarily work from here
 
 |aap2
-|RHEL 9.3
+|RHEL 9.4
 |Yes
 |Primary AAP2 Platform for Controller, Hub, EDA
 
 |aap2-backend
-|RHEL 9.3
+|RHEL 9.4
 |No
 |Postgres database - you will install this 
 
 |app-frontend
-|RHEL 9.3
+|RHEL 9.4
 |Yes
 |Simple frontend for test application
 
 |app-frontend
-|RHEL 9.3
+|RHEL 9.4
 |No
 |Simple backend for test application
 
@@ -89,7 +89,7 @@ image::topology.png[Lab Topology,align="center",width="100%"]
 
 The terminals to your right are logged in via `ssh` to the bastion as the `devops` user. You can directly `ssh` to any of the hosts in your environment. You will run the installer from `bastion` but your Containerized AAP2 will deploy to `aap2` and your Postgres database to `aap2-database`
 
-NOTE: All instances are running RHEL 9.3 and are sized appropriately for the lab.
+NOTE: All instances are running RHEL 9.4 and are sized appropriately for the lab.
 
 ////
 == Containerized AAP2 Services and Ports

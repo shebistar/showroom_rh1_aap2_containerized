@@ -12,7 +12,7 @@ If you are swapping back and forth between the 2 terminals remember to ensure th
 
 [source,sh,role=execute,subs=attributes+]
 ----
-export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.4-1-x86_64/collections
+export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/collections
 ----
 ====
 

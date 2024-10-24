@@ -141,7 +141,13 @@ In this section you will configure your inventory, logically this can be seen as
 
 === Editing the Inventory
 
-All basic configuration for the AAP2 Containerized Installer is done via the `inventory` file. 
+All basic configuration for the AAP2 Containerized Installer is done via the `inventory-growth` file. The full inventory file is in the `inventory` file. We will overwrite the `inventory-growth` to `inventory` for simplicity.
+
+[TIP] 
+====
+You can take a look at the `inventory` file before overwriting it, with the command of your choice i.e. `less`, `cat`, `more`
+====
+
 
 [TIP] 
 ====
@@ -150,8 +156,13 @@ Your machine, `bastion` comes with both `vim` and `nano` pre-installed but `mc` 
 Those of you using Visual Studio Code on your laptops or similar are welcome to use the `ssh` vars in the *Resources and Credentials* Module for remote editing however setup and configuration are not covered in the lab.
 ====
 
-. Open your inventory file for editing using your editor of choice:
+. Rename your inventory-growth file for editing using your editor of choice:
 +
+
+[source,ini,role=execute,subs=attributes+]
+----
+mv inventory-growth inventory
+----
 
 [source,ini,role=execute,subs=attributes+]
 ----
@@ -237,6 +248,8 @@ The next section should look like this
 bundle_install=true
 # The bundle directory must include /bundle in the path
 bundle_dir=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle
+
+
 redis_mode=standalone
 ----
 +
@@ -261,7 +274,6 @@ gateway_admin_password=r3dh4t1!
 gateway_pg_host=aap2-database.{guid}.internal
 gateway_pg_password=r3dh4t1!
 gateway_validate_certs=false
-#gateway_nginx_disable_https=true
 
 ----
 
