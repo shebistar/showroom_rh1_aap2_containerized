@@ -33,7 +33,7 @@ As the tar archive unpacks you will see there are two major components to the bu
 
 [source,ini,role=execute,subs=attributes+]
 ----
-tar -xvf ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64.tar.gz
+tar -xvf ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64.tar.gz
 ----
 +
 

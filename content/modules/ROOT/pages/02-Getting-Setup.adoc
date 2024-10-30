@@ -41,7 +41,7 @@ tree -L 1
 [source,texinfo]
 ----
 .
-├── ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64.tar.gz <1>
+├── ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64.tar.gz <1>
 ├── inventory <2>
 ├── manifest.zip <3>
 ├── postgres-for-aap2 <4>
