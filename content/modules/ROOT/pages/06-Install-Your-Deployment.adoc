@@ -12,7 +12,7 @@ If you are swapping back and forth between the 2 terminals remember to ensure th
 
 [source,sh,role=execute,subs=attributes+]
 ----
-export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/collections
+export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/collections
 ----
 ====
 
@@ -24,7 +24,7 @@ export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-contain
 
 [source,sh,role=execute,subs=attributes+]
 ----
-cd ~/ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64
+cd ~/ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64
 ----
 
 . Ensure your ANSIBLE_COLLECTIONS_PATH is set correctly
@@ -37,7 +37,7 @@ By default `ansible` would not be able to find the collections inside the bundle
 
 [source,sh,role=execute,subs=attributes+]
 ----
-export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/collections
+export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/collections
 ----
 
 [TIP]
@@ -227,7 +227,7 @@ The next module will guide us through an exploration of running a `job_template`
 |Service |URL |Login |Password
 
 | Automation Gateway
-|`http://aap2.{subdomain}:80`
+|`https://aap2.{subdomain}`
 | `admin`
 | `r3dh4t1!`
 

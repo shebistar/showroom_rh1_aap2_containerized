@@ -1,10 +1,8 @@
-= Postinstall Capability
+= Configuration as Code Capability
 
 icon:clock-o[Duration: 15 Minutes] Duration: 15 minutes
 
-A new feature in the TechPreview Installer is the link:https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html-single/containerized_ansible_automation_platform_installation_guide/index#using-postinstall_aap-containerized-installation[Postinstall] capability
-
-This enables your AAP2 infrastructure to come up both with its manifest already inserted but also Controller resources including:
+Configuration as Code *(CaC)* link:https://www.redhat.com/en/blog/ansible-automation-controller-cac-gitops[link] enables your AAP2 to come up AAP2 resources including:
 
 * Organizations
 * Inventories
@@ -14,7 +12,7 @@ This enables your AAP2 infrastructure to come up both with its manifest already 
 * Projects
 * Job Templates 
 
-Or any other resource capable of being installed by the powerful `infra.controller_configuration` link:https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/[collection] fully documented link:https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/docs/[here]. 
+Or any other resource capable of being installed by the powerful https://console.redhat.com/ansible/automation-hub/repo/published/ansible/controller/docs/[ansible.controller] and https://console.redhat.com/ansible/automation-hub/repo/published/ansible/platform/docs/[ansible.platform] collections. 
 
 You can view all the collections contained within the bundled installer with the `ansible-galaxy` command. 
 
@@ -23,7 +21,7 @@ You can view all the collections contained within the bundled installer with the
 
 [source,sh,role=execute,subs=attributes+]
 ----
-export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/collections
+export ANSIBLE_COLLECTIONS_PATH=/home/devops/aap-2.5-caac/collections
 ----
 
 . Validate the ANSIBLE_COLLECTIONS_PATH is correctly set via `ansible-galaxy list`
@@ -38,63 +36,27 @@ ansible-galaxy collection list
 .Sample Output
 [source,texinfo]
 ----
-Collection                      Version
-------------------------------- -------
-ansible.containerized_installer 2.5.0  
-ansible.controller              4.6.2  
-ansible.gateway_configuration   0.0.1  
-ansible.posix                   1.5.4  
-community.crypto                2.22.0 
-community.postgresql            3.4.0  
-containers.podman               1.15.4 
-infra.ah_configuration          2.0.6  
-infra.controller_configuration  2.9.0  
+
+Collection         Version
+------------------ -------
+ansible.controller 4.6.1  
+ansible.platform   2.5.0   
 ----
 
 [configure]
-== Create a Complete Postinstall Example
+== Create a Complete Configuration as Code *(CaC)* Example
 
-In this section, we will create a complete application deployment scenario creating all the resources up to and including a `job_template`.  After the installation is complete we will manually run the `job_template` to both work hands-on with the Containerized AAP2 Console and to check that the Postinstall feature works as expected in creating resources.
+In this section, we will create a complete application deployment scenario creating all the resources up to and including a `job_template`.  After the installation is complete we will manually run the `job_template` to both work hands-on with the Containerized AAP2 Console and to check that the (CaC) feature works as expected in creating resources.
 
 You will see the Controller Console is identical to other AAP2 deployment platforms (Red Hat Enterprise Linux, OpenShift, or a Cloud-Based AAP2 such as provided by Azure and AWS). 
 
-. Recall that in the prior module whilst configuring the inventory you edited this section:
-+
 
-As long as it matches the below no further edits should be necessary
-+
-
-[source,sh,role=execute,subs=attributes+]
-----
-# AAP Controller - optional
-# -------------------------
-# To use the postinstall feature you need to set these variables
-controller_postinstall=true
-controller_license_file=/home/devops/manifest.zip
-controller_postinstall_dir=/home/devops/config-as-code
-----
-
-. Validate the Automation Controller manifest exists
+. Ensure you are in your config-as-code directory
 +
 
 [source,sh,role=execute,subs=attributes+]
 ----
-ls /home/devops/manifest.zip
-----
-+
-
-.Sample Output
-[source,texinfo]
-----
-/home/devops/manifest.zip
-----
-
-. Ensure you are in your home directory and create the config-as-code directory
-+
-
-[source,sh,role=execute,subs=attributes+]
-----
-cd; mkdir config-as-code
+cd ~/aap-2.5-caac
 ----
 
 . Add a `controller` sub-directory for a good structure and `cd` into it
@@ -105,12 +67,6 @@ cd; mkdir config-as-code
 This of course could easily be a Git Repositary which you could easily clone.
 ====
 +
-
-[source,sh,role=execute,subs=attributes+]
-----
-mkdir config-as-code/controller
-cd config-as-code/controller
-----
 
 . Create a new file `credentials.yml` and enter the following YAML list
 +
@@ -131,7 +87,7 @@ image::controller_configuration.png[Lab Topology,align="center",width="100%"]
 ---
 controller_credentials:
 
-  - name: rhsummit-demo-credential
+  - name: rh1-demo-credential
     credential_type: Machine
     organization: Default
     inputs:
@@ -146,13 +102,8 @@ In the final line, we directly reference a variable `GUID` which is both part of
 Alternatively, we could hard code it but the above approach is superior and allows easy re-use of a `config-as-code` repo.
 ====
 
-[TIP]
-====
-We will skip creating organizations, in upcoming AAP 2.5 versions, it will be possible to do it via the `post_install` feature.
-====
-////
+. Create a new file `organizations.yml` and enter the following YAML list
 +
-
 
 [source,sh,role=execute,subs=attributes+]
 ---- 
@@ -164,7 +115,6 @@ controller_organizations:
   - name: Devops
     description: "DevOps and Automation Team"
 ----
-////
 
 . Create a new file `inventories.yml` and enter the following YAML list
 +
@@ -174,7 +124,7 @@ controller_organizations:
 ---
 controller_inventories:
 
-  - name: rhsummit-demo-inventory
+  - name: rh1-demo-inventory
     organization: Default
     description: {event_name}
 ----
@@ -188,11 +138,11 @@ controller_inventories:
 controller_hosts:
 
   - name: "app-frontend.{{ GUID }}.internal"
-    inventory: rhsummit-demo-inventory
+    inventory: rh1-demo-inventory
     enabled: true
 
   - name: "app-backend.{{ GUID }}.internal"
-    inventory: rhsummit-demo-inventory
+    inventory: rh1-demo-inventory
     enabled: true
 ----
 
@@ -206,13 +156,13 @@ controller_groups:
 
   - name: app_frontends
     description: App frontend
-    inventory: rhsummit-demo-inventory
+    inventory: rh1-demo-inventory
     hosts:
       - "app-frontend.{{ GUID }}.internal"
 
   - name: app_backends
     description: App backend
-    inventory: rhsummit-demo-inventory
+    inventory: rh1-demo-inventory
     hosts:
       - "app-backend.{{ GUID }}.internal"
 ----
@@ -225,7 +175,7 @@ controller_groups:
 ---
 controller_projects:
 
-  - name: rhsummit-demo-project
+  - name: rh1-demo-project
     organization: Default
     scm_branch: main
     scm_clean: 'no'
@@ -244,16 +194,16 @@ controller_projects:
 ---
 controller_templates:
 
-  - name: rhsummit-demo-job-template
+  - name: rh1-demo-job-template
     job_type: run
-    inventory: rhsummit-demo-inventory
-    project: rhsummit-demo-project
+    inventory: rh1-demo-inventory
+    project: rh1-demo-project
     playbook: deploy-app.yml
     credentials:
-      - rhsummit-demo-credential
+      - rh1-demo-credential
 ----
 
-. Check you have the *6* configuration files
+. Check you have the *7* configuration files
 +
 
 [source,sh,role=execute,subs=attributes+]
@@ -270,13 +220,9 @@ groups.yml
 hosts.yml
 inventories.yml
 job_templates.yml
+organizations.yml
 projects.yml
 ----
-
-////
-organizations.yml
-////
-
 
 == Summary
 

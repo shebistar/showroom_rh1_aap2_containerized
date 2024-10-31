@@ -11,14 +11,14 @@ We touched on the new Postinstall capability built on top of the `infra.controll
 |===
 |URL |Login |Password
 
-|`http://aap2.{subdomain}:80`
+|`https://aap2.{subdomain}`
 | `admin`
 | `r3dh4t1!`
 
 |===
 +
 
-image::controller_homescreen.png[Lab Topology,align="center",width="100%"]
+image::controller_homescreen.png[Controller Homescreen,align="center",width="100%"]
 +
 
 [TIP]
@@ -29,16 +29,16 @@ As mentioned earlier the installer has *not* installed valid certificates so you
 . Explore the *Resources* section to validate that the Postinstall feature did indeed create the resources you specified in your `config-as-code/controller` directory.
 +
 
-image::controller_dashboard.png[Lab Topology,align="center",width="100%"]
+image::controller_dashboard.png[Controller Dashboard,align="center",width="100%"]
 
-. Now navigate the *Templates* screen and open the *rh1-demo-job-template*
+. Now navigate the *Automation Execution --> Templates* screen and open the *rhsummit-demo-job-template*
 +
 
-image::controller_templates.png[Lab Topology,align="center",width="100%"]
+image::controller_templates.png[Controller Templates,align="center",width="100%"]
 
 +
 
-image::job_template.png[Lab Topology,align="center",width="100%"]
+image::job_template.png[Job Template,align="center",width="100%"]
 
 . Launch the *Job Template* via the *Launch* button
 

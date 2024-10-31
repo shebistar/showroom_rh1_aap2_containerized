@@ -40,26 +40,26 @@ tar -xvf ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64.tar
 .Sample Output
 [source,texinfo]
 ----
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/README.md
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/ansible.cfg
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/inventory
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/inventory-growth
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/controller-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/de-supported-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/eda-controller-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/eda-controller-ui-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/ee-minimal-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/ee-supported-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/gateway-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/gateway-proxy-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/hub-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/hub-web-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/receptor-rhel8.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/postgresql-15.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/redis-6.tar.gz
-ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/images/pcp.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/README.md
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/ansible.cfg
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/inventory
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/inventory-growth
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/controller-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/de-supported-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/eda-controller-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/eda-controller-ui-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/ee-minimal-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/ee-supported-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/gateway-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/gateway-proxy-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/hub-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/hub-web-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/receptor-rhel8.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/postgresql-15.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/redis-6.tar.gz
+ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/bundle/images/pcp.tar.gz
 ----
 +
 
@@ -68,7 +68,7 @@ ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle/image
 
 [source,ini,role=execute,subs=attributes+]
 ----
-cd ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64
+cd ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64
 ----
 
 . Explore the basic structure, for example, `tree -L 3` gives an informative overview
@@ -215,7 +215,7 @@ aap2.{guid}.internal
 # This section is for the AAP database
 # -----------------------------------------------------
 [database]
-#aap2
+aap2-database.{guid}.internal
 
 [all:vars]
 postgresql_admin_username=postgres
@@ -247,7 +247,7 @@ The next section should look like this
 
 bundle_install=true
 # The bundle directory must include /bundle in the path
-bundle_dir=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-1-x86_64/bundle
+bundle_dir='{{ lookup("ansible.builtin.env", "PWD") }}/bundle'
 
 
 redis_mode=standalone
@@ -289,7 +289,7 @@ In this section, we will configure the Controller, and associate it with the Pos
 # https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/containerized_installation/appendix-inventory-files-vars#ref-controller-variables
 # -----------------------------------------------------
 controller_admin_password=r3dh4t1!
-controller_pg_host=aap2-database
+controller_pg_host=aap2-database.{guid}.internal
 controller_pg_password=r3dh4t1!
 
 # AAP Controller - optional
@@ -312,7 +312,7 @@ This section is straightforward and we will point at the same database as before
 # https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/containerized_installation/appendix-inventory-files-vars#ref-hub-variables
 # -----------------------------------------------------
 hub_admin_password=r3dh4t1!
-hub_pg_host=aap2-database
+hub_pg_host=aap2-database.{guid}.internal
 hub_pg_password=r3dh4t1!
 ----
 
@@ -328,7 +328,7 @@ This section is straightforward and we will point at the same database as before
 # https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/containerized_installation/appendix-inventory-files-vars#event-driven-ansible-controller
 # -----------------------------------------------------
 eda_admin_password=r3dh4t1!
-eda_pg_host=aap2-database
+eda_pg_host=aap2-database.{guid}.internal
 eda_pg_password=r3dh4t1!
 ----
 

@@ -3,11 +3,11 @@
 
 icon:clock-o[Duration: 10 Minutes] Duration: 10 minutes
 
-In this module, we will install our own Postgres backend for Containerized AAP2 *without* using our bundled installer.
+In this module, we will discuss about our Postgres backend for Containerized AAP2 using our bundled installer.
 
-== Why install our own Postgres?
+== Why install Postgres in a different VM?
 
-Given that the installer for Containerized AAP2 supports creating and running a Containerized version of Postgres why are we installing our own? The Containerized AAP2 installer supports a very flexible mix of architectural choices including:
+Given that the installer for Containerized AAP2 supports creating and running a Containerized version of Postgres why are we installing it in another VM? The Containerized AAP2 installer supports a very flexible mix of architectural choices including:
 
 * "All in One": All components Controller, Hub, EDA and Postgres on 1 node
 ** This is useful for dev/testing and also for example for a laptop VM
@@ -18,8 +18,6 @@ Given that the installer for Containerized AAP2 supports creating and running a 
 ====
 Not all components need to be installed, for example, if you don't need Hub or EDA, you can omit their configuration/installation. I.e. by commenting out the relevant parts of the installer inventory.
 ====
-
-In this module, we will install our version of Postgres to show how the Containerized AAP2 Installer supports this and allows Controller etc to make use of a pre-existing instance of Postgres. This is useful in many scenarios e.g. customer has a dedicated Postgres team or uses Cloud-Based DBaaS (Database as a Service) with a Postgres flavor (in our case this must be Postgres 13 currently).
 
 The Two Tier architecture also provides several advantages:
 
@@ -50,7 +48,7 @@ NOTE: important to understand the support model of using external pass grass, an
 NOTE: It is beyond the scope of this lab to cover the support implications of externally self hosted or cloud-hosted Postgres.
 
 == Postgres Requirements
-//// 
+
 
 == How
 
@@ -168,6 +166,8 @@ Several of the most common issues we see with remote Postgres installations incl
 If you are curious as to the first 2 points, they are configured in the vars in `group_vars/aap2_databases.yml` and then set via the `geerlingguy.postgresql` role.
 
 ////
+
+//// 
 ==== Basic Checklist for broken Postgres Installs
 
 . `[]` Is it running! (`ps -ef`)
@@ -177,6 +177,7 @@ If you are curious as to the first 2 points, they are configured in the vars in 
 ////
 == Summary
 
-This module is now complete, we now have a running Postgres database we can use with the Containerized AAP2 Installer.
+This module is now complete, we will install a Postgres database with the Containerized AAP2 Installer.
 
 In the next module, we will unpack the AAP2 Containerized Installer and configure our inventory for installation.
+
