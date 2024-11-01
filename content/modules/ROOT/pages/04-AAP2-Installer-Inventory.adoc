@@ -3,11 +3,22 @@
 
 icon:clock-o[Duration: 15 Minutes] Duration: 15 minutes
 
-Now we are ready to configure our installation. In your home directory, you will find a compressed tar file with the Containerized AAP2 installer. Just as with the older Ansible Tower, and also the installer for Automation Controller for servers, VMs, or cloud instances the installer relies on the configuration of an Ansible inventory.
+Now that we’re set up, let's proceed with configuring the Ansible Automation Platform (AAP) 2 installation. In your home directory, you’ll find a compressed tar file containing the Containerized AAP2 installer.
 
-Remember, currently, as discussed in Module 1, this is still a Technical Preview. The installer is available for Red Hat Enterprise Linux across two architectures x86 and Arm. In addition, it is available in two formats, a lightweight installer, which assumes both Internet access and a Red Hat Network login and the bundled installer. 
+Just like previous Ansible Tower installations and the Automation Controller installers for servers, virtual machines, and cloud instances, this installer depends on configuring an Ansible inventory. This inventory specifies the configuration details necessary for the installation process.
 
-We will use the bundled installer which includes all its dependencies, including the container images for the major components and also for the execution environments, etc. We will explore these during the installation process.
+Installer Options for Red Hat Enterprise Linux (RHEL): The AAP2 installer is available for RHEL in two architectures—x86 and Arm—and offers two formats:
+
+*Lightweight Installer:* Requires both Internet access and a Red Hat Network login to pull in dependencies during installation.
+
+*Bundled Installer:* Self-contained and includes all dependencies, such as container images for essential components and execution environments.
+
+For this setup, we’ll use the bundled installer to ensure all dependencies are included, allowing us to proceed without external downloads. During the installation process, we’ll explore the included components, including container images for the primary services and execution environments.
+
+[TIP]
+====
+*Fourth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20of%20the%20installer%20options%20requires%20internet%20access?-37[Fourth Challenge Link]
+====
 
 == Unpack and Explore the Installer
 
@@ -137,15 +148,35 @@ In this section you will configure your inventory, logically this can be seen as
 . Automation Hub
 . Automation EDA (Event Driven Ansible)
 . Postgresql
-. AAP Controller Postinstall  (Optional, covered in next Module)
+. AAP Postinstall  (Optional, covered in next Module)
+
+.Containerized Architecture Components
+image::containerized_aap_architecture.png[Controller Dashboard,align="center",width="100%"]
+
 
 === Editing the Inventory
 
-All basic configuration for the AAP2 Containerized Installer is done via the `inventory-growth` file. The full inventory file is in the `inventory` file. We will overwrite the `inventory-growth` to `inventory` for simplicity.
+#### Container Topologies
+The containerized installer deploys Ansible Automation Platform (AAP) on Red Hat Enterprise Linux (RHEL) using Podman to run the platform in containers on host machines. This deployment model allows customers to manage both the product and infrastructure lifecycle independently.
 
-[TIP] 
+##### Container Growth Topology
+
+The growth topology is designed for organizations new to Ansible Automation Platform who do not yet require high availability or substantial computing resources for large-scale automation. This topology is optimized for smaller, low-footprint deployments, making it an ideal starting point for most organizations.
+
+##### Infrastructure Topology
+
+The Infrastructure Topology is available for customers choosing to self-manage Ansible Automation Platform.
+
+All primary configurations for the AAP2 Containerized Installer are handled through the inventory-growth file. For simplified setup, we’ll replace inventory-growth with the main inventory file to consolidate all configurations.
+
+[TIP]
 ====
-You can take a look at the `inventory` file before overwriting it, with the command of your choice i.e. `less`, `cat`, `more`
+*Fifth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20Container%20Topology%20works%20better%20for%20organizations%20new%20to%20AAP?-38[Fifth Challenge Link]
+====
+
+[TIP]
+====
+Before overwriting, you can inspect the existing inventory file by using commands like less, cat, or more to view its configuration.
 ====
 
 
@@ -163,6 +194,7 @@ Those of you using Visual Studio Code on your laptops or similar are welcome to 
 ----
 mv inventory-growth inventory
 ----
++
 
 [source,ini,role=execute,subs=attributes+]
 ----

@@ -44,14 +44,12 @@ tree -L 1
 ├── ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64.tar.gz <1>
 ├── inventory <2>
 ├── manifest.zip <3>
-├── postgres-for-aap2 <4>
-└── solution <5>
+└── solution <4>
 ----
 
 . The Containerized AAP2 Installer - bundled version
 . A sample `inventory` for the entire lab infrastructure
 . An AAP2 Manifest - injected in Module 6
-. A simple Postgres installer repository
 . A sample solution repo for reference
 
 == Initial Configuration
@@ -76,7 +74,7 @@ Red Hat Enterprise Linux 9 for x86_64 - AppStream - Advanced Update Support (RPM
  <TRUNCATED>
 
  Installed:
-  ansible-core-1:2.15.12-1.el9ap.noarch            python3-cffi-1.15.0-3.el9ap.x86_64                    
+  ansible-core-1:2.XX.XX-1.el9ap.noarch            python3-cffi-1.15.0-3.el9ap.x86_64                    
   python3-cryptography-42.0.5-1.el9ap.x86_64       python3-importlib-resources-5.0.7-1.el9ap.noarch      
   python3-packaging-21.3-2.el9ap.noarch            python3-pycparser-2.21-2.el9pc.noarch                 
   python3-pyparsing-3.0.9-1.el9ap.noarch           python3-resolvelib-0.5.4-5.el9.noarch                 
@@ -98,7 +96,7 @@ ansible --version
 .Sample Output (Your output may vary)
 [source,texinfo]
 ----
-ansible [core 2.15.12]
+ansible [core 2.XX.XX]
   config file = /etc/ansible/ansible.cfg
   configured module search path = ['/home/devops/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
   ansible python module location = /usr/lib/python3.9/site-packages/ansible
@@ -109,6 +107,11 @@ ansible [core 2.15.12]
   libyaml = True
 ----
 +
+
+[TIP]
+====
+Second Challenge: After executing the previous command in the terminal, copy and paste the Ansible Core version installed `2.XX.XX` and paste it on the following link: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Type%20the%20Ansible%20Core%20version%20installed%20(2.XX.XX)-34[Second Challenge Link]
+====
 
 In your home directory of the `devops` user, there is an inventory. Use this to confirm that Ansible is working correctly and that your `SSH` configuration allows you to authenticate to all the hosts.
 +

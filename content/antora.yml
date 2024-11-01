@@ -10,7 +10,6 @@ asciidoc:
     page-pagination: true
     # experimental: true
     # release-version: master
-    lab_name: "RH1 AAP2 Containerized"
     guid: my-guid
     subdomain: aap2-01.sandbox5.opentlc.com
     subdomain_internal: aap2-01.internal
