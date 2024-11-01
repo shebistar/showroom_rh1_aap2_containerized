@@ -41,7 +41,7 @@ ansible-galaxy collection list
 Collection                      Version
 ------------------------------- -------
 ansible.containerized_installer 2.5.0  
-ansible.controller              4.6.2  
+ansible.controller              X.X.X 
 ansible.gateway_configuration   0.0.1  
 ansible.posix                   1.5.4  
 community.crypto                2.22.0 
@@ -50,6 +50,11 @@ containers.podman               1.15.4
 infra.ah_configuration          2.0.6  
 infra.controller_configuration  2.9.0  
 ----
+
+[TIP]
+====
+*Sixth Challenge:* Based on the previous executed command solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20Container%20Topology%20works%20better%20for%20organizations%20new%20to%20AAP?-38[Sixth Challenge Link,window=read-later]
+====
 
 [configure]
 == Create a Complete Postinstall Example
@@ -102,7 +107,7 @@ cd; mkdir config-as-code
 
 [TIP]
 ====
-This of course could easily be a Git Repositary which you could easily clone.
+This of course could easily be a Git Repository which you could easily clone.
 ====
 +
 
@@ -113,17 +118,6 @@ cd config-as-code/controller
 ----
 
 . Create a new file `credentials.yml` and enter the following YAML list
-+
-
-[TIP]
-====
-If you want to add further AAP2 Resources (Inventories, Projects etc) you can refer to the document link:https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[linked earlier]
-
-Your file names, e.g. `credentials.yml` etc should match the names of the roles in the collections with the postfix `.yml`
-   
-====
-+
-image::controller_configuration.png[Lab Topology,align="center",width="100%"]
 +
 
 [source,sh,role=execute,subs=attributes+]
@@ -139,6 +133,25 @@ controller_credentials:
       ssh_key_data: "{{ lookup('file', '/home/devops/.ssh/' + GUID + 'key.pem') }}"
 ----
 +
+
+
+[TIP]
+====
+If you want to add further AAP2 Resources (Inventories, Projects etc) you can refer to the document link:https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[linked earlier]
+
+*Seventh Challenge:* Based on the following https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[link] solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Copy/Paste%20the%20license%20for%20the%20infra.controller_configuration%20collection-40[Sixth Challenge Link,window=read-later]
+
+Your file names, e.g. `credentials.yml` etc should match the names of the roles in the collections with the postfix `.yml`
+   
+Seventh 
+====
+
+
+image::controller_configuration.png[Controller Configuration,align="center",width="100%"]
+
+
+
+
 [NOTE]
 ====
 In the final line, we directly reference a variable `GUID` which is both part of the FQDN of our hosts and also the name of our SSH key (`<GUID>key.pem`). Since our installer has no visibility of the var `GUID` we will have to pass it to the installer at run time ie via `-e GUID={guid}`.

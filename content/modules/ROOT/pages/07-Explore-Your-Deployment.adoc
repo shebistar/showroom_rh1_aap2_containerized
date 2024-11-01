@@ -11,7 +11,7 @@ We touched on the new Postinstall capability built on top of the `infra.controll
 |===
 |URL |Login |Password
 
-|`https://aap2.{subdomain}`
+|https://aap2.{subdomain}[https://aap2.{subdomain},window=read-later]
 | `admin`
 | `r3dh4t1!`
 
@@ -26,7 +26,7 @@ image::controller_homescreen.png[Controller Homescreen,align="center",width="100
 As mentioned earlier the installer has *not* installed valid certificates so your browser will warn you of this. 
 ====
 
-. Explore the *Resources* section to validate that the Postinstall feature did indeed create the resources you specified in your `config-as-code/controller` directory.
+. Explore the *Overview* section to validate that the Postinstall feature did indeed create the resources you specified in your `config-as-code/controller` directory.
 +
 
 image::controller_dashboard.png[Controller Dashboard,align="center",width="100%"]
@@ -71,6 +71,11 @@ curl app-frontend:8000/api/resources | jq
   }
 ]
 ----
+
+[TIP]
+====
+*Tenth Challenge:* Based on the previous command output, copy and paste the `first author` to appear on the output to solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20Postgresql%20container%20image%20version-42[Tenth Challenge Link,window=read-later]
+====
 
 == Summary and Bonus Activities
 

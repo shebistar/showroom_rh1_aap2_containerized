@@ -22,8 +22,8 @@ fi
 
 ${CONTAINER_RUNTIME} \
   run -d --rm --name showroom-httpd \
-  --platform linux/amd64 -p 8443:80 \
+  --platform linux/amd64 -p 8449:80 \
   -v "./www:/usr/local/apache2/htdocs/" \
   docker.io/httpd:2.4
 
-echo "Serving lab content on http://localhost:8443/index.html"
+echo "Serving lab content on http://localhost:8449/index.html"

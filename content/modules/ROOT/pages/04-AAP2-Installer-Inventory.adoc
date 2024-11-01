@@ -17,7 +17,7 @@ For this setup, we’ll use the bundled installer to ensure all dependencies are
 
 [TIP]
 ====
-*Fourth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20of%20the%20installer%20options%20requires%20internet%20access?-37[Fourth Challenge Link]
+*Fourth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20of%20the%20installer%20options%20requires%20internet%20access?-37[Fourth Challenge Link,window=read-later]
 ====
 
 == Unpack and Explore the Installer
@@ -156,14 +156,14 @@ image::containerized_aap_architecture.png[Controller Dashboard,align="center",wi
 
 === Editing the Inventory
 
-#### Container Topologies
+==== Container Topologies
 The containerized installer deploys Ansible Automation Platform (AAP) on Red Hat Enterprise Linux (RHEL) using Podman to run the platform in containers on host machines. This deployment model allows customers to manage both the product and infrastructure lifecycle independently.
 
-##### Container Growth Topology
+==== Container Growth Topology
 
 The growth topology is designed for organizations new to Ansible Automation Platform who do not yet require high availability or substantial computing resources for large-scale automation. This topology is optimized for smaller, low-footprint deployments, making it an ideal starting point for most organizations.
 
-##### Infrastructure Topology
+==== Infrastructure Topology
 
 The Infrastructure Topology is available for customers choosing to self-manage Ansible Automation Platform.
 
@@ -171,7 +171,7 @@ All primary configurations for the AAP2 Containerized Installer are handled thro
 
 [TIP]
 ====
-*Fifth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20Container%20Topology%20works%20better%20for%20organizations%20new%20to%20AAP?-38[Fifth Challenge Link]
+*Fifth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20Container%20Topology%20works%20better%20for%20organizations%20new%20to%20AAP?-38[Fifth Challenge Link,window=read-later]
 ====
 
 [TIP]
@@ -201,7 +201,7 @@ mv inventory-growth inventory
 vim inventory
 ----
 
-. Configure the Groups for Gateway, Controller, Hub, and EDA
+. Configure the Groups for Gateway, Database, Controller, Hub, and EDA
 +
 
 As you can see the inventory is partially configured for a local install eg on a single local VM. However, in our case, we will be placing the gateway, controller, hub, and EDA on a single remote host. Recall that we can distribute them more widely with 1 component per VM etc - the installer is very flexible.
@@ -210,6 +210,11 @@ As you can see the inventory is partially configured for a local install eg on a
 [NOTE]
 In our example, all `ssh` is set up already, feel free to explore `/home/devops/.ssh/config` In many cases you may need to make changes either there or in the inventory file. A good simple test is `ansible all -m ping -i inventory` to validate configuration and ssg setup.
 +
+
+[IMPORTANT]
+====
+The `inventory` has default values. Replace the values to match the lab infrastructure. You *must* compare the template on the left with the `inventory` file you are modifying on the right, otherwise the installation will fail.
+====
 
 [source,ini,role=execute,subs=attributes+]
 ----
@@ -249,9 +254,6 @@ aap2.{guid}.internal
 [database]
 aap2-database.{guid}.internal
 
-[all:vars]
-postgresql_admin_username=postgres
-postgresql_admin_password=r3dh4t1!
 ----
 +
 
@@ -276,6 +278,9 @@ The next section should look like this
 # Common variables
 # https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/containerized_installation/appendix-inventory-files-vars#ref-general-inventory-variables
 # -----------------------------------------------------
+[all:vars]
+postgresql_admin_username=postgres
+postgresql_admin_password=r3dh4t1!
 
 bundle_install=true
 # The bundle directory must include /bundle in the path
@@ -305,7 +310,6 @@ In this section, we will configure the Gateway, and associate it with the Postgr
 gateway_admin_password=r3dh4t1!
 gateway_pg_host=aap2-database.{guid}.internal
 gateway_pg_password=r3dh4t1!
-gateway_validate_certs=false
 
 ----
 
@@ -391,4 +395,4 @@ aap2 | SUCCESS => {
 
 == Summary
 
-Hopefully, you will agree that the configuration of the `inventory` is quite straightforward. Also, it should be apparent how you could configure all sorts of different scenarios via the inventory groups ranging from an "all in one" install on a single node to a completely distributed one service per node type install.
+Hopefully, you will agree that the configuration of the `inventory` is quite straightforward. Also, it should be apparent how you could configure all sorts of different scenarios via the inventory groups ranging from an "all-in-one" install on a single node to a completely distributed one service per node type install.

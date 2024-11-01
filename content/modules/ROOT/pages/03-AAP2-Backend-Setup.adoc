@@ -7,19 +7,19 @@ In this module, we will discuss about our Postgres backend for Containerized AAP
 
 == Why install Postgres in a different VM?
 
-Given that the installer for Containerized AAP2 supports creating and running a Containerized version of Postgres why are we installing it in another VM? The Containerized AAP2 installer supports a very flexible mix of architectural choices including:
+Given that the installer for Containerized AAP2 supports creating and running a Containerized version of Postgres, why are we installing it in another VM? The Containerized AAP2 installer supports a very flexible mix of architectural choices including:
 
-* "All in One": All components Controller, Hub, EDA and Postgres on 1 node
+* All-in-One: All components Controller, Hub, EDA and Postgres on 1 node
 ** This is useful for dev/testing and also for example for a laptop VM
 * All distributed: Every component on its VM
-* Two Tier: Separate Database
+* Two-tier: Separate Database
 
 [NOTE]
 ====
 Not all components need to be installed, for example, if you don't need Hub or EDA, you can omit their configuration/installation. I.e. by commenting out the relevant parts of the installer inventory.
 ====
 
-The Two Tier architecture also provides several advantages:
+The Two-tier architecture also provides several advantages:
 
 * Clear separation of concerns
 * Avoid potential I/O issues around Container Volumes
@@ -27,7 +27,7 @@ The Two Tier architecture also provides several advantages:
 
 [TIP]
 ====
-*Third Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Two%20Tier%20architecture%20benefits%20-36[Third Challenge Link]
+*Third Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Two%20Tier%20architecture%20benefits%20-36[Third Challenge Link,window=read-later]
 ====
 
 [NOTE]

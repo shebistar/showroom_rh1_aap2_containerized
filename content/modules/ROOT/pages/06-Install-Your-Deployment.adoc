@@ -1,6 +1,6 @@
 = Containerized AAP2 Installation
 
-icon:clock-o[Duration: 15 Minutes] Duration: 15 minutes
+icon:clock-o[Duration: 30 Minutes] Duration: 30 minutes
 
 Finally time to run the installer though the actual configuration steps in the prior two modules were quite relatively straightforward.
 
@@ -109,19 +109,21 @@ aap
 └── containers
     ├── podman
     ├── storage
-    └── storage.conf
+    └── xxxxxxx.xxxx
 ----
 +
+
+[TIP]
+====
+*Eigth Challenge:* Based on the previous command output solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20last%20file%20name%20(replace%20the%20xxxxxx.xxxx%20with%20the%20right%20value)-41[Eight Challenge Link,window=read-later]
+====
+
 
 Containerized AAP2 Installer configures the above directory structure in the `ansible_user` account, in our case the `ec2-user`. In Production, it would be a good practice to create a dedicated service account for this purpose.
 
 . Explore the `podman` configuration with `podman image ls` and later in the installer process `podman ps`
 +
 
-[NOTE]
-====
-Since we are running our install of Postgres you will *not* see it in the output of the above commands. Had we chosen to use the Containerized AAP2 version we would.
-====
 +
 
 [source,sh,role=execute,subs=attributes+]
@@ -153,7 +155,14 @@ registry.redhat.io/ansible-automation-platform-25/receptor-rhel8           lates
 cf7  4 weeks ago  346 MB
 registry.redhat.io/rhel8/redis-6                                           latest      1e3c9ff29
 583  5 weeks ago  301 MB
+registry.redhat.io/rhel8/postgresql-XX                                     latest      2392b56e6b5e  4 weeks ago  778 MB
 ----
+
+[TIP]
+====
+*Ninth Challenge:* Based on the previous command output, wait until the `postgresql-XX` image appears to solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20Postgresql%20container%20image%20version-42[Ninth Challenge Link,window=read-later]
+====
+
 
 . As the installation progresses the various containers run by `podman` as `systemd` services will come to life.
 +
@@ -215,9 +224,14 @@ pulpcore-worker       6 minutes ago   Up 4 minutes               automation-hub-
 pulpcore-worker       6 minutes ago   Up 4 minutes               automation-hub-worker-2
 ----
 
+[NOTE]
+====
+The installation process will take around *20* more minutes beyond this point. You can grab a coffee/bewerage of your choice, or ask some questions to the Lab monitors. After your coffee break, you can continue with the lab instructions, no matter if the installation has not completed, we need only the `Automation Gateway`, and the `Automation Controller` to be ready for the next steps.
+====
+
 == Summary
 
-We have now, hopefully, successfully run the deployer and installed Containerized AAP2 and connected it to the Postgres instance we installed earlier in Module 3.
+We have now, hopefully, successfully run the deployer and installed Containerized AAP2.
 
 The next module will guide us through an exploration of running a `job_template` on our new installation but feel free to explore the components:
 
