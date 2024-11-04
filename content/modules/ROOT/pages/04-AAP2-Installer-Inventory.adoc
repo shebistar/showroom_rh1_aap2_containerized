@@ -184,7 +184,7 @@ Before overwriting, you can inspect the existing inventory file by using command
 ====
 Your machine, `bastion` comes with both `vim` and `nano` pre-installed but `mc` (Midnight Commander), `neovim`, and `emacs` are all available via `dnf` e.g. `sudo dnf install -y mc` etc. Please feel free to install your favorite editor.
 
-Those of you using Visual Studio Code on your laptops or similar are welcome to use the `ssh` vars in the *Resources and Credentials* Module for remote editing however setup and configuration are not covered in the lab.
+Those of you using Visual Studio Code on your laptops or similar are welcome to use the `ssh` vars in the link:Resources-and-Credentials.html[*Resources and Credentials*] Module for remote editing however setup and configuration are not covered in the lab.
 ====
 
 . Rename your inventory-growth file for editing using your editor of choice:

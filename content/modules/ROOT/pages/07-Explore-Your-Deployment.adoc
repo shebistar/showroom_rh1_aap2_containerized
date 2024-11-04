@@ -100,30 +100,35 @@ systemctl list-units --type=service --state=running --user
 
 .Sample Output
 [source,texinfo]
-----
-  UNIT                                  LOAD   ACTIVE SUB     DESCRIPTION
-  automation-controller-rsyslog.service loaded active running Podman automation-controller-rsyslog.service
-  automation-controller-task.service    loaded active running Podman automation-controller-task.service
-  automation-controller-web.service     loaded active running Podman automation-controller-web.service
-  automation-eda-api.service            loaded active running Podman automation-eda-api.service
-  automation-eda-daphne.service         loaded active running Podman automation-eda-daphne.service
-  automation-eda-web.service            loaded active running Podman automation-eda-web.service
-  automation-eda-worker-1.service       loaded active running Podman automation-eda-worker-1.service
-  automation-eda-worker-2.service       loaded active running Podman automation-eda-worker-2.service
-  automation-hub-api.service            loaded active running Podman automation-hub-api.service
-  automation-hub-content.service        loaded active running Podman automation-hub-content.service
-  automation-hub-web.service            loaded active running Podman automation-hub-web.service
-  automation-hub-worker-1.service       loaded active running Podman automation-hub-worker-1.service
-  automation-hub-worker-2.service       loaded active running Podman automation-hub-worker-2.service
-  dbus-broker.service                   loaded active running D-Bus User Message Bus
-  receptor.service                      loaded active running Podman receptor.service
-  redis.service                         loaded active running Podman redis.service
+  UNIT                                       LOAD   ACTIVE SUB     DESCRIPTION                                      
+  automation-controller-rsyslog.service      loaded active running Podman automation-controller-rsyslog.service
+  automation-controller-task.service         loaded active running Podman automation-controller-task.service
+  automation-controller-web.service          loaded active running Podman automation-controller-web.service
+  automation-eda-activation-worker-1.service loaded active running Podman automation-eda-activation-worker-1.service
+  automation-eda-activation-worker-2.service loaded active running Podman automation-eda-activation-worker-2.service
+  automation-eda-api.service                 loaded active running Podman automation-eda-api.service
+  automation-eda-daphne.service              loaded active running Podman automation-eda-daphne.service
+  automation-eda-scheduler.service           loaded active running Podman automation-eda-scheduler.service
+  automation-eda-web.service                 loaded active running Podman automation-eda-web.service
+  automation-eda-worker-1.service            loaded active running Podman automation-eda-worker-1.service
+  automation-eda-worker-2.service            loaded active running Podman automation-eda-worker-2.service
+  automation-gateway-proxy.service           loaded active running Podman automation-gateway-proxy.service
+  automation-gateway.service                 loaded active running Podman automation-gateway.service
+  automation-hub-api.service                 loaded active running Podman automation-hub-api.service
+  automation-hub-content.service             loaded active running Podman automation-hub-content.service
+  automation-hub-web.service                 loaded active running Podman automation-hub-web.service
+  automation-hub-worker-1.service            loaded active running Podman automation-hub-worker-1.service
+  automation-hub-worker-2.service            loaded active running Podman automation-hub-worker-2.service
+  dbus-broker.service                        loaded active running D-Bus User Message Bus
+  podman.service                             loaded active running Podman API Service
+  receptor.service                           loaded active running Podman receptor.service
+  redis-tcp.service                          loaded active running Podman redis-tcp.service
+  redis-unix.service                         loaded active running Podman redis-unix.service
 
 LOAD   = Reflects whether the unit definition was properly loaded.
 ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
 SUB    = The low-level unit activation state, values depend on unit type.
-16 loaded units listed.
-----
+XX loaded units listed.
 
 . You can explore/list these services with `podman ps`
 +
@@ -137,22 +142,28 @@ podman ps
 .Sample Output
 [source,texinfo]
 ----
-CONTAINER ID  IMAGE                                                                             COMMAND               CREATED       STATUS          PORTS       NAMES
-558d20985b0e  registry.redhat.io/rhel8/redis-6:latest                                           run-redis             22 hours ago  Up 2 hours ago              redis
-ce1b3f5b1af3  registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest       /usr/bin/receptor...  22 hours ago  Up 2 hours ago              receptor
-e8174b595959  registry.redhat.io/ansible-automation-platform-24/controller-rhel8:latest         /usr/bin/launch_a...  21 hours ago  Up 2 hours ago              automation-controller-rsyslog
-9527103dc199  registry.redhat.io/ansible-automation-platform-24/controller-rhel8:latest         /usr/bin/launch_a...  21 hours ago  Up 2 hours ago              automation-controller-task
-67550c656f89  registry.redhat.io/ansible-automation-platform-24/controller-rhel8:latest         /usr/bin/launch_a...  21 hours ago  Up 2 hours ago              automation-controller-web
-cdf5c870108b  registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8:latest     gunicorn --bind 1...  21 hours ago  Up 2 hours ago              automation-eda-api
-ad4658314bf5  registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8:latest     daphne -b 127.0.0...  21 hours ago  Up 2 hours ago              automation-eda-daphne
-4cb9d1393bc4  registry.redhat.io/ansible-automation-platform-24/eda-controller-ui-rhel8:latest  /bin/sh -c nginx ...  21 hours ago  Up 2 hours ago              automation-eda-web
-1bf7818b5c01  registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8:latest     aap-eda-manage rq...  21 hours ago  Up 2 hours ago              automation-eda-worker-1
-4fe655d086bf  registry.redhat.io/ansible-automation-platform-24/eda-controller-rhel8:latest     aap-eda-manage rq...  21 hours ago  Up 2 hours ago              automation-eda-worker-2
-e581c53b554c  registry.redhat.io/ansible-automation-platform-24/hub-rhel8:latest                pulp-api              21 hours ago  Up 2 hours ago              automation-hub-api
-fa165ebe3672  registry.redhat.io/ansible-automation-platform-24/hub-rhel8:latest                pulp-content          21 hours ago  Up 2 hours ago              automation-hub-content
-018b41b8c61c  registry.redhat.io/ansible-automation-platform-24/hub-web-rhel8:latest            nginx -g daemon o...  21 hours ago  Up 2 hours ago              automation-hub-web
-68aefbf7b4c6  registry.redhat.io/ansible-automation-platform-24/hub-rhel8:latest                pulp-worker           21 hours ago  Up 2 hours ago              automation-hub-worker-1
-40234e5517c4  registry.redhat.io/ansible-automation-platform-24/hub-rhel8:latest                pulp-worker           21 hours ago  Up 2 hours ago              automation-hub-worker-2
+CONTAINER ID  IMAGE                                                                             COMMAND               CREATED         STATUS         PORTS       NAMES
+df16e0efb631  registry.redhat.io/rhel8/redis-6:latest                                           run-redis             30 minutes ago  Up 30 minutes              redis-unix
+29a7b17be26a  registry.redhat.io/rhel8/redis-6:latest                                           run-redis             30 minutes ago  Up 30 minutes              redis-tcp
+00cb46c57434  registry.redhat.io/ansible-automation-platform-25/gateway-proxy-rhel8:latest      /usr/bin/envoy --...  28 minutes ago  Up 26 minutes              automation-gateway-proxy
+157f8c8e80c3  registry.redhat.io/ansible-automation-platform-25/gateway-rhel8:latest            /usr/bin/supervis...  28 minutes ago  Up 26 minutes              automation-gateway
+ddd30873ee49  registry.redhat.io/ansible-automation-platform-25/receptor-rhel8:latest           /usr/bin/receptor...  25 minutes ago  Up 25 minutes              receptor
+0331dd7796af  registry.redhat.io/ansible-automation-platform-25/controller-rhel8:latest         /usr/bin/launch_a...  24 minutes ago  Up 16 minutes              automation-controller-rsyslog
+cfd43ddd5c9e  registry.redhat.io/ansible-automation-platform-25/controller-rhel8:latest         /usr/bin/launch_a...  23 minutes ago  Up 16 minutes              automation-controller-task
+d30f75b4f780  registry.redhat.io/ansible-automation-platform-25/controller-rhel8:latest         /usr/bin/launch_a...  23 minutes ago  Up 16 minutes              automation-controller-web
+fcf4098522d4  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest     gunicorn --bind 1...  15 minutes ago  Up 13 minutes              automation-eda-api
+f2427b7836cc  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest     daphne --bind 127...  14 minutes ago  Up 13 minutes              automation-eda-daphne
+7322f7953322  registry.redhat.io/ansible-automation-platform-25/eda-controller-ui-rhel8:latest  /bin/sh -c nginx ...  14 minutes ago  Up 12 minutes              automation-eda-web
+66b7d56a927b  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest     aap-eda-manage rq...  14 minutes ago  Up 12 minutes              automation-eda-worker-1
+e64e0fc1308a  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest     aap-eda-manage rq...  14 minutes ago  Up 12 minutes              automation-eda-worker-2
+fe7ee3f45970  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest     aap-eda-manage rq...  14 minutes ago  Up 12 minutes              automation-eda-activation-worker-1
+2be818e22ce4  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest     aap-eda-manage rq...  14 minutes ago  Up 12 minutes              automation-eda-activation-worker-2
+113a19fbdc5e  registry.redhat.io/ansible-automation-platform-25/eda-controller-rhel8:latest     aap-eda-manage sc...  14 minutes ago  Up 12 minutes              automation-eda-scheduler
+a895bd5c870e  registry.redhat.io/ansible-automation-platform-25/hub-rhel8:latest                pulpcore-api --na...  11 minutes ago  Up 8 minutes               automation-hub-api
+a588c7a930e4  registry.redhat.io/ansible-automation-platform-25/hub-rhel8:latest                pulpcore-content ...  10 minutes ago  Up 8 minutes               automation-hub-content
+039781d55c4b  registry.redhat.io/ansible-automation-platform-25/hub-web-rhel8:latest            /bin/sh -c nginx ...  10 minutes ago  Up 8 minutes               automation-hub-web
+43f426f59a7e  registry.redhat.io/ansible-automation-platform-25/hub-rhel8:latest                pulpcore-worker       10 minutes ago  Up 8 minutes               automation-hub-worker-1
+baa5e9ba8add  registry.redhat.io/ansible-automation-platform-25/hub-rhel8:latest                pulpcore-worker       10 minutes ago  Up 8 minutes               automation-hub-worker-2
 ----
 
 . Examine the logs of a running service (container) with `podman logs <service-name>`
@@ -174,13 +185,12 @@ podman logs automation-controller-task
 [source,texinfo]
 ----
 <TRUNCATED>
-2024-01-17 00:46:57,357 INFO     [32ce8bef076945d0bfda781d6c79d205] awx.analytics.job_lifecycle job-37 running playbook
-2024-01-17 00:46:57,374 INFO     [32ce8bef076945d0bfda781d6c79d205] awx.analytics.job_lifecycle job-37 work unit id received
-2024-01-17 00:46:57,443 INFO     [32ce8bef076945d0bfda781d6c79d205] awx.analytics.job_lifecycle job-37 work unit id assigned
-2024-01-17 00:47:56,421 INFO     [-] awx.analytics.job_lifecycle job-37 stats wrapup finished
-2024-01-17 00:47:56,902 INFO     [32ce8bef076945d0bfda781d6c79d205] awx.main.commands.run_callback_receiver Starting EOF event processing for Job 37
-2024-01-17 00:47:56,905 INFO     [32ce8bef076945d0bfda781d6c79d205] awx.analytics.job_lifecycle job-37 post run
-2024-01-17 00:47:57,082 INFO     [32ce8bef076945d0bfda781d6c79d205] awx.analytics.job_lifecycle job-37 finalize run
+2024-11-04 10:08:41,029 INFO     [32f71f7bc8f14e3c87f1749bea413505] awx.analytics.job_lifecycle job-2 waiting {"type": "job", "task_id": 2, "state": "waiting", "work_unit_id": null, "task_name": "rhsummit-demo-job-template"}
+2024-11-04 10:08:41,363 INFO     [32f71f7bc8f14e3c87f1749bea413505] awx.analytics.job_lifecycle job-2 pre run {"type": "job", "task_id": 2, "state": "pre_run", "work_unit_id": null, "task_name": "rhsummit-demo-job-template"}
+2024-11-04 10:08:41,777 INFO     [32f71f7bc8f14e3c87f1749bea413505] awx.analytics.job_lifecycle job-2 preparing playbook {"type": "job", "task_id": 2, "state": "preparing_playbook", "work_unit_id": null, "task_name": "rhsummit-demo-job-template"}
+2024-11-04 10:08:41,988 INFO     [32f71f7bc8f14e3c87f1749bea413505] awx.analytics.job_lifecycle job-2 running playbook {"type": "job", "task_id": 2, "state": "running_playbook", "work_unit_id": null, "task_name": "rhsummit-demo-job-template"}
+2024-11-04 10:08:42,016 INFO     [32f71f7bc8f14e3c87f1749bea413505] awx.analytics.job_lifecycle job-2 work unit id received {"type": "job", "task_id": 2, "state": "work_unit_id_received", "work_unit_id": "eCIjw8Xt", "task_name": "rhsummit-demo-job-template"}
+2024-11-04 10:08:42,095 INFO     [32f71f7bc8f14e3c87f1749bea413505] awx.analytics.job_lifecycle job-2 work unit id assigned {"type": "job", "task_id": 2, "state": "work_unit_id_assigned", "work_unit_id": "eCIjw8Xt", "task_name": "rhsummit-demo-job-template"}
 ----
 
 . Finally explore the `aap` directory, `tree -L 1` and increment the `-L` flag to look deeper into the directory hierarchy.

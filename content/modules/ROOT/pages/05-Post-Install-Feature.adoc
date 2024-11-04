@@ -2,7 +2,7 @@
 
 icon:clock-o[Duration: 15 Minutes] Duration: 15 minutes
 
-A new feature in the TechPreview Installer is the link:https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html-single/containerized_ansible_automation_platform_installation_guide/index#using-postinstall_aap-containerized-installation[Postinstall] capability
+A new feature in the Containerized Installer is the link:https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html-single/containerized_installation/index#ref-controller-variables[Postinstall] capability
 
 This enables your AAP2 infrastructure to come up both with its manifest already inserted but also Controller resources including:
 
@@ -53,7 +53,7 @@ infra.controller_configuration  2.9.0
 
 [TIP]
 ====
-*Sixth Challenge:* Based on the previous executed command solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20Container%20Topology%20works%20better%20for%20organizations%20new%20to%20AAP?-38[Sixth Challenge Link,window=read-later]
+*Sixth Challenge:* Based on the previous executed command solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Give%20the%20version%20number%20for%20ansible.controller-39[Sixth Challenge Link,window=read-later]
 ====
 
 [configure]
@@ -139,7 +139,7 @@ controller_credentials:
 ====
 If you want to add further AAP2 Resources (Inventories, Projects etc) you can refer to the document link:https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[linked earlier]
 
-*Seventh Challenge:* Based on the following https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[link] solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Copy/Paste%20the%20license%20for%20the%20infra.controller_configuration%20collection-40[Sixth Challenge Link,window=read-later]
+*Seventh Challenge:* Based on the following https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[link] solve the quiz: hhttps://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Copy/Paste%20the%20license%20for%20the%20infra.controller_configuration%20collection-40[Seventh Challenge Link,window=read-later]
 
 Your file names, e.g. `credentials.yml` etc should match the names of the roles in the collections with the postfix `.yml`
    
@@ -159,7 +159,7 @@ In the final line, we directly reference a variable `GUID` which is both part of
 Alternatively, we could hard code it but the above approach is superior and allows easy re-use of a `config-as-code` repo.
 ====
 
-[TIP]
+[WARNING]
 ====
 We will skip creating organizations, in upcoming AAP 2.5 versions, it will be possible to do it via the `post_install` feature.
 ====

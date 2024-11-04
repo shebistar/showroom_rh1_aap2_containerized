@@ -114,13 +114,13 @@ Second Challenge: After executing the previous command in the terminal, copy and
 ====
 
 In your home directory of the `devops` user, there is an inventory. Use this to confirm that Ansible is working correctly and that your `SSH` configuration allows you to authenticate to all the hosts.
-+
+
 
 [source,ini,role=execute,subs=attributes+]
 ----
 ansible all -m ping -i inventory
 ----
-+
+
 
 .Sample Output
 [source,texinfo]
@@ -136,14 +136,14 @@ aap2-database.aap2-02.internal | SUCCESS => {
     "ping
 
 ----
-+
+
 
 NOTE: In the unlikely event that you see any failures, please ask for assistance.
 
 == Optional: Customization your Environment
 
 Your environment is now ready for you to customize, if there are tools and editors you prefer or shell settings, exports etc you would like to make.
-The lab will take approximately 60-90 minutes so you can take a moment to add your favorite tools, aliases, etc. to make your environment your own.
+The lab will take approximately 60-120 minutes so you can take a moment to add your favorite tools, aliases, etc. to make your environment your own.
 For example any of your favorite tools such as linters, `ripgrep`, `neovim` etc. 
 
 You may also want to consider adjusting your environment to your taste or perhaps your `~/.vimrc`, `~/.bashrc` etc. You'll be on this host for 90 minutes so take a moment to make it your own.

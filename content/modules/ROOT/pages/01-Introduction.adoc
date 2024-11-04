@@ -2,7 +2,7 @@
 
 icon:clock-o[Duration: 10 Minutes] Duration: 10 minutes
 
-Welcome to the {event_name} {lab_name} lab where we will explore the configuration options of AAP using Configuration as Code principles, and work our way through a scenario whilst in parallel explore what is going on under the covers with the configuration gaining insight into how it actual deploys and allows Ansible Automation Platform to be fully functional with Configuration as Code.
+Welcome to the  lab where we will explore the Welcome to the *{event_name} {lab_name}*! In this lab, we’ll explore AAP’s configuration options using Configuration as Code principles. As we work through a hands-on scenario, we’ll also delve into the underlying configuration details to understand how AAP is deployed and becomes fully functional through Configuration as Code.
 
 // TODO: Add intro 
 

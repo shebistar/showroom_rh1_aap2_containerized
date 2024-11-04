@@ -1,6 +1,6 @@
 = Containerized AAP2 Installation
 
-icon:clock-o[Duration: 30 Minutes] Duration: 30 minutes
+icon:clock-o[Duration: 30-60 Minutes] Duration: 30-60 minutes
 
 Finally time to run the installer though the actual configuration steps in the prior two modules were quite relatively straightforward.
 
@@ -113,6 +113,11 @@ aap
 ----
 +
 
+[INFO]
+====
+If you don't see the same output as printed before, wait a couple of seconds and try again
+====
+
 [TIP]
 ====
 *Eigth Challenge:* Based on the previous command output solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20last%20file%20name%20(replace%20the%20xxxxxx.xxxx%20with%20the%20right%20value)-41[Eight Challenge Link,window=read-later]
@@ -153,14 +158,18 @@ registry.redhat.io/ansible-automation-platform-25/gateway-proxy-rhel8      lates
 4d1  4 weeks ago  295 MB
 registry.redhat.io/ansible-automation-platform-25/receptor-rhel8           latest      f146268bd
 cf7  4 weeks ago  346 MB
-registry.redhat.io/rhel8/redis-6                                           latest      1e3c9ff29
+registry.redhat.io/rhel8/redis-X                                           latest      1e3c9ff29
 583  5 weeks ago  301 MB
-registry.redhat.io/rhel8/postgresql-XX                                     latest      2392b56e6b5e  4 weeks ago  778 MB
 ----
+
+[INFO]
+====
+If you don't see the same output as printed before, wait a few minutes and try again
+====
 
 [TIP]
 ====
-*Ninth Challenge:* Based on the previous command output, wait until the `postgresql-XX` image appears to solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20Postgresql%20container%20image%20version-42[Ninth Challenge Link,window=read-later]
+*Ninth Challenge:* Based on the previous command output, wait until the `postgresql-XX` image appears to solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20Redis%20container%20image%20version-42[Ninth Challenge Link,window=read-later]
 ====
 
 
@@ -241,8 +250,8 @@ The next module will guide us through an exploration of running a `job_template`
 |Service |URL |Login |Password
 
 | Automation Gateway
-|`https://aap2.{subdomain}`
-| `admin`
-| `r3dh4t1!`
+|https://aap2.{subdomain}[https://aap2.{subdomain},window=read-later]
+|`admin`
+|`r3dh4t1!`
 
 |===
