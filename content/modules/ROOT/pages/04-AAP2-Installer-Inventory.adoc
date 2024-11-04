@@ -171,7 +171,7 @@ All primary configurations for the AAP2 Containerized Installer are handled thro
 
 [TIP]
 ====
-*Fifth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20Container%20Topology%20works%20better%20for%20organizations%20new%20to%20AAP?-38[Fifth Challenge Link,window=read-later]
+*Fifth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20Container%20Topology%20works%20better%20for%20organizations%20new%20to%20AAP-38[Fifth Challenge Link,window=read-later]
 ====
 
 [TIP]
