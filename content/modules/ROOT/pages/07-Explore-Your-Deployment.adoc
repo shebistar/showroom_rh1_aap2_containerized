@@ -72,7 +72,7 @@ curl app-frontend:8000/api/resources | jq
 ]
 ----
 
-[TIP]
+[CHALLENGE]
 ====
 *Tenth Challenge:* Based on the previous command output, copy and paste the `first author` to appear on the output to solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20Postgresql%20container%20image%20version-42[Tenth Challenge Link,window=read-later]
 ====

@@ -113,12 +113,12 @@ aap
 ----
 +
 
-[INFO]
+[WARNING]
 ====
 If you don't see the same output as printed before, wait a couple of seconds and try again
 ====
 
-[TIP]
+[CHALLENGE]
 ====
 *Eigth Challenge:* Based on the previous command output solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20last%20file%20name,%20replace%20the%20xxxxxx.xxxx%20with%20the%20right%20value-41[Eight Challenge Link,window=read-later]
 ====
@@ -162,12 +162,12 @@ registry.redhat.io/rhel8/redis-X                                           lates
 583  5 weeks ago  301 MB
 ----
 
-[INFO]
+[WARNING]
 ====
 If you don't see the same output as printed before, wait a few minutes and try again
 ====
 
-[TIP]
+[CHALLENGE]
 ====
 *Ninth Challenge:* Based on the previous command output, wait until the `redis-XX` image appears to solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20Redis%20container%20image%20version-42[Ninth Challenge Link,window=read-later]
 ====

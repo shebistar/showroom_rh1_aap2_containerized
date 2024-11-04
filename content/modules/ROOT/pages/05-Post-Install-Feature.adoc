@@ -51,7 +51,7 @@ infra.ah_configuration          2.0.6
 infra.controller_configuration  2.9.0  
 ----
 
-[TIP]
+[CHALLENGE]
 ====
 *Sixth Challenge:* Based on the previous executed command solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Give%20the%20version%20number%20for%20ansible.controller-39[Sixth Challenge Link,window=read-later]
 ====
@@ -137,13 +137,14 @@ controller_credentials:
 
 [TIP]
 ====
-If you want to add further AAP2 Resources (Inventories, Projects etc) you can refer to the document link:https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[linked earlier]
+If you want to add further AAP2 Resources (Inventories, Projects etc) you can refer to the document link:https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[linked earlier]. Your file names, e.g. `credentials.yml` etc should match the names of the roles in the collections with the postfix `.yml`
 
+====
+
+[CHALLENGE]
+====
 *Seventh Challenge:* Based on the following https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[link] solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Copy/Paste%20the%20license%20for%20the%20infra.controller_configuration%20collection-40[Seventh Challenge Link,window=read-later]
-
-Your file names, e.g. `credentials.yml` etc should match the names of the roles in the collections with the postfix `.yml`
-   
-Seventh 
+ 
 ====
 
 

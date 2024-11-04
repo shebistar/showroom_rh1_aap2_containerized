@@ -15,7 +15,7 @@ Installer Options for Red Hat Enterprise Linux (RHEL): The AAP2 installer is ava
 
 For this setup, we’ll use the bundled installer to ensure all dependencies are included, allowing us to proceed without external downloads. During the installation process, we’ll explore the included components, including container images for the primary services and execution environments.
 
-[TIP]
+[CHALLENGE]
 ====
 *Fourth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20of%20the%20installer%20options%20requires%20internet%20access?-37[Fourth Challenge Link,window=read-later]
 ====
@@ -169,7 +169,7 @@ The Infrastructure Topology is available for customers choosing to self-manage A
 
 All primary configurations for the AAP2 Containerized Installer are handled through the inventory-growth file. For simplified setup, we’ll replace inventory-growth with the main inventory file to consolidate all configurations.
 
-[TIP]
+[CHALLENGE]
 ====
 *Fifth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20Container%20Topology%20works%20better%20for%20organizations%20new%20to%20AAP-38[Fifth Challenge Link,window=read-later]
 ====

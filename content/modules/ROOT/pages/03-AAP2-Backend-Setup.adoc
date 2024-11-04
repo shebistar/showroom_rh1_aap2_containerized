@@ -25,7 +25,7 @@ The Two-tier architecture also provides several advantages:
 * Avoid potential I/O issues around Container Volumes
 * Allow for the use of I/O optimized Servers and/or Cloud Instances
 
-[TIP]
+[CHALLENGE]
 ====
 *Third Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Two%20Tier%20architecture%20benefits%20-36[Third Challenge Link,window=read-later]
 ====

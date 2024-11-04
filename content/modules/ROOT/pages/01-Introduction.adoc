@@ -47,9 +47,9 @@ Containerized AAP2 requires Red Hat Enterprise Linux 9.2 or later.
 
 |===
 
-[TIP]
+[CHALLENGE]
 ====
-First Challenge: Go to https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html-single/containerized_installation/index[The AAP 2.5 Containerized Documentation,window=read-later], and find about the deployment topologies, then solve the first challenge using this link: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#How%20many%20topology%20shapes%20does%20the%20AAP%202.5%20Containerized%20Installer%20offers?-33[First Challenge Link,window=read-later]
+*First Challenge:* Go to https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html-single/containerized_installation/index[The AAP 2.5 Containerized Documentation,window=read-later], and find about the deployment topologies, then solve the first challenge using this link: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#How%20many%20topology%20shapes%20does%20the%20AAP%202.5%20Containerized%20Installer%20offers?-33[First Challenge Link,window=read-later]
 
 ====
 

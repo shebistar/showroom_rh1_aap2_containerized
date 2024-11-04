@@ -108,7 +108,7 @@ ansible [core 2.XX.XX]
 ----
 +
 
-[TIP]
+[CHALLENGE]
 ====
 *Second Challenge:* After executing the previous command in the terminal, copy and paste the Ansible Core version installed `2.XX.XX` and paste it on the following link: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Type%20the%20Ansible%20Core%20version%20installed%20(2.XX.XX)-34[Second Challenge Link,window=read-later]
 ====
