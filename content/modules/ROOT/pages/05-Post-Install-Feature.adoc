@@ -53,7 +53,7 @@ infra.controller_configuration  2.9.0
 
 [CHALLENGE]
 ====
-*Sixth Challenge:* Based on the previous executed command solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Give%20the%20version%20number%20for%20ansible.controller-39[Sixth Challenge Link,window=read-later]
+*Sixth Challenge:* Based on the previous executed command solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#6%20-%20Give%20the%20version%20number%20for%20ansible.controller-39[Sixth Challenge Link,window=read-later]
 ====
 
 [configure]
@@ -120,7 +120,7 @@ cd config-as-code/controller
 . Create a new file `credentials.yml` and enter the following YAML list
 +
 
-[source,sh,role=execute,subs=attributes+]
+[source,yaml,role=execute,subs=attributes+]
 ----
 ---
 controller_credentials:
@@ -135,7 +135,7 @@ controller_credentials:
 +
 
 
-[TIP]
+[NOTE]
 ====
 If you want to add further AAP2 Resources (Inventories, Projects etc) you can refer to the document link:https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[linked earlier]. Your file names, e.g. `credentials.yml` etc should match the names of the roles in the collections with the postfix `.yml`
 
@@ -143,7 +143,7 @@ If you want to add further AAP2 Resources (Inventories, Projects etc) you can re
 
 [CHALLENGE]
 ====
-*Seventh Challenge:* Based on the following https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[link] solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Copy/Paste%20the%20license%20for%20the%20infra.controller_configuration%20collection-40[Seventh Challenge Link,window=read-later]
+*Seventh Challenge:* Based on the following https://galaxy.ansible.com/ui/repo/published/infra/controller_configuration/content/role/organizations/[link] solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#7%20-%20Copy/Paste%20the%20license%20for%20the%20infra.controller_configuration%20collection-40[Seventh Challenge Link,window=read-later]
  
 ====
 
@@ -162,7 +162,7 @@ Alternatively, we could hard code it but the above approach is superior and allo
 
 [WARNING]
 ====
-We will skip creating organizations, in upcoming AAP 2.5 versions, it will be possible to do it via the `post_install` feature.
+We will skip creating organizations, and we will use the `Default` organization for our Lab. In upcoming AAP 2.5 versions, it will be possible to create organizations via the `post_install` feature.
 ====
 ////
 +
@@ -183,7 +183,7 @@ controller_organizations:
 . Create a new file `inventories.yml` and enter the following YAML list
 +
 
-[source,sh,role=execute,subs=attributes+]
+[source,yaml,role=execute,subs=attributes+]
 ----
 ---
 controller_inventories:
@@ -196,7 +196,7 @@ controller_inventories:
 . Create a new file `hosts.yml` and enter the following YAML list
 +
 
-[source,sh,role=execute,subs=attributes+]
+[source,yaml,role=execute,subs=attributes+]
 ----
 ---
 controller_hosts:
@@ -213,7 +213,7 @@ controller_hosts:
 . Create a new file `groups.yml` and enter the following YAML list
 +
 
-[source,sh,role=execute,subs=attributes+]
+[source,yaml,role=execute,subs=attributes+]
 ----
 ---
 controller_groups:
@@ -234,7 +234,7 @@ controller_groups:
 . Create a new file `projects.yml` and enter the following YAML list
 +
 
-[source,sh,role=execute,subs=attributes+]
+[source,yaml,role=execute,subs=attributes+]
 ----
 ---
 controller_projects:
@@ -253,7 +253,7 @@ controller_projects:
 . Finally, create a new file `job_templates.yml` and enter the following YAML list
 +
 
-[source,sh,role=execute,subs=attributes+]
+[source,yaml,role=execute,subs=attributes+]
 ----
 ---
 controller_templates:

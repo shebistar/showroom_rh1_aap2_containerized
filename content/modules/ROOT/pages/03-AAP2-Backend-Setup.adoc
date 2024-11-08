@@ -27,7 +27,7 @@ The Two-tier architecture also provides several advantages:
 
 [CHALLENGE]
 ====
-*Third Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Two%20Tier%20architecture%20benefits%20-36[Third Challenge Link,window=read-later]
+*Third Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#3%20-%20Two%20Tier%20architecture%20benefits%20-36[Third Challenge Link,window=read-later]
 ====
 
 [NOTE]

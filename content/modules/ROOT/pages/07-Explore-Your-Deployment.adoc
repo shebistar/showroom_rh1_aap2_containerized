@@ -74,7 +74,7 @@ curl app-frontend:8000/api/resources | jq
 
 [CHALLENGE]
 ====
-*Tenth Challenge:* Based on the previous command output, copy and paste the `first author` to appear on the output to solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20Postgresql%20container%20image%20version-42[Tenth Challenge Link,window=read-later]
+*Tenth Challenge:* Based on the previous command output, copy and paste the `first author` to appear on the output to solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#10%20-%20Copy/Paste%20the%20first%20author%20after%20executing%20the%20command-43[Tenth Challenge Link,window=read-later]
 ====
 
 == Summary and Bonus Activities

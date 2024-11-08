@@ -17,7 +17,7 @@ For this setup, we’ll use the bundled installer to ensure all dependencies are
 
 [CHALLENGE]
 ====
-*Fourth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20of%20the%20installer%20options%20requires%20internet%20access?-37[Fourth Challenge Link,window=read-later]
+*Fourth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#4%20-%20Which%20of%20the%20installer%20options%20requires%20internet%20access?-37[Fourth Challenge Link,window=read-later]
 ====
 
 == Unpack and Explore the Installer
@@ -171,7 +171,7 @@ All primary configurations for the AAP2 Containerized Installer are handled thro
 
 [CHALLENGE]
 ====
-*Fifth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Which%20Container%20Topology%20works%20better%20for%20organizations%20new%20to%20AAP-38[Fifth Challenge Link,window=read-later]
+*Fifth Challenge:* Based on the previous information solve the quiz: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#5%20-%20Which%20Container%20Topology%20works%20better%20for%20organizations%20new%20to%20AAP-38[Fifth Challenge Link,window=read-later]
 ====
 
 [TIP]
@@ -196,6 +196,16 @@ mv inventory-growth inventory
 ----
 +
 
+[TIP]
+====
+If you decide to use vim, it is recommended to configure the /home/devops/.vimrc file with the following values:
+[source,ini,role=execute,subs=attributes+]
+----
+autocmd FileType yaml setlocal ai ts=2 et nu cuc cursorline
+----
+====
++
+
 [source,ini,role=execute,subs=attributes+]
 ----
 vim inventory
@@ -204,7 +214,7 @@ vim inventory
 . Configure the Groups for Gateway, Database, Controller, Hub, and EDA
 +
 
-As you can see the inventory is partially configured for a local install eg on a single local VM. However, in our case, we will be placing the gateway, controller, hub, and EDA on a single remote host. Recall that we can distribute them more widely with 1 component per VM etc - the installer is very flexible.
+As you can see the inventory is partially configured for a local install eg on a single local VM. However, in our case, we will be placing the gateway, controller, hub, and EDA on a single remote host, and the `postgresql` database in ahother host. Recall that we can distribute them more widely with 1 component per VM etc - the installer is very flexible.
 +
 
 [NOTE]
@@ -215,6 +225,7 @@ In our example, all `ssh` is set up already, feel free to explore `/home/devops/
 ====
 The `inventory` has default values. Replace the values to match the lab infrastructure. You *must* compare the template on the left with the `inventory` file you are modifying on the right, otherwise the installation will fail.
 ====
++
 
 [source,ini,role=execute,subs=attributes+]
 ----

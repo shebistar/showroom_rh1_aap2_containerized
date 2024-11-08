@@ -120,7 +120,7 @@ If you don't see the same output as printed before, wait a couple of seconds and
 
 [CHALLENGE]
 ====
-*Eigth Challenge:* Based on the previous command output solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#Paste%20the%20last%20file%20name,%20replace%20the%20xxxxxx.xxxx%20with%20the%20right%20value-41[Eight Challenge Link,window=read-later]
+*Eigth Challenge:* Based on the previous command output solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#7%20-%20Copy/Paste%20the%20license%20for%20the%20infra.controller_configuration%20collection-40[Eight Challenge Link,window=read-later]
 ====
 
 
