@@ -1,4 +1,4 @@
-= Postinstall Capability
+= 5. Postinstall Capability
 
 icon:clock-o[Duration: 15 Minutes] Duration: 15 minutes
 
@@ -117,7 +117,7 @@ mkdir config-as-code/controller
 cd config-as-code/controller
 ----
 
-. Create a new file `credentials.yml` and enter the following YAML list
+. Create a new file `credentials.yml` in the `config-as-code/controller` folder, and enter the following YAML list:
 +
 
 [source,yaml,role=execute,subs=attributes+]
@@ -180,7 +180,7 @@ controller_organizations:
 ----
 ////
 
-. Create a new file `inventories.yml` and enter the following YAML list
+. Create a new file `inventories.yml` in the `config-as-code/controller` folder, and enter the following YAML list
 +
 
 [source,yaml,role=execute,subs=attributes+]
@@ -193,7 +193,7 @@ controller_inventories:
     description: {event_name}
 ----
 
-. Create a new file `hosts.yml` and enter the following YAML list
+. Create a new file `hosts.yml` in the `config-as-code/controller` folder, and enter the following YAML list
 +
 
 [source,yaml,role=execute,subs=attributes+]
@@ -210,7 +210,7 @@ controller_hosts:
     enabled: true
 ----
 
-. Create a new file `groups.yml` and enter the following YAML list
+. Create a new file `groups.yml` in the `config-as-code/controller` folder, and enter the following YAML list
 +
 
 [source,yaml,role=execute,subs=attributes+]
@@ -231,7 +231,7 @@ controller_groups:
       - "app-backend.{{ GUID }}.internal"
 ----
 
-. Create a new file `projects.yml` and enter the following YAML list
+. Create a new file `projects.yml` in the `config-as-code/controller` folder, and enter the following YAML list
 +
 
 [source,yaml,role=execute,subs=attributes+]
@@ -250,7 +250,7 @@ controller_projects:
 ----
 
 
-. Finally, create a new file `job_templates.yml` and enter the following YAML list
+. Finally, create a new file `job_templates.yml` in the `config-as-code/controller` folder, and enter the following YAML list
 +
 
 [source,yaml,role=execute,subs=attributes+]
@@ -267,7 +267,7 @@ controller_templates:
       - rhsummit-demo-credential
 ----
 
-. Check you have the *6* configuration files
+. Check you have the *6* configuration files in the `config-as-code/controller` folder
 +
 
 [source,sh,role=execute,subs=attributes+]

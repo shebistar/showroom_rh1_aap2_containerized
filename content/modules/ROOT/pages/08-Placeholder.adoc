@@ -1,4 +1,4 @@
-= Getting Setup
+= 8. Getting Setup
 
 * Install Ansible and other dependencies
 *

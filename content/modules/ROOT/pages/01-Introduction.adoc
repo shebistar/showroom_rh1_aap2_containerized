@@ -1,4 +1,4 @@
-= Introduction
+= 1. Introduction
 
 icon:clock-o[Duration: 10 Minutes] Duration: 10 minutes
 
@@ -23,17 +23,6 @@ In this, opening, module, we will explore the lab goals, our environment and int
 * *Earn points by completing stages:* Gamify the experience by awarding points as participants complete each stage, with Red Hat swag up for grabs!
 ====
 
-[#modules]
-== The Lab Modules
-
-. link:01-Introduction.html[Introduction] - this document you are currently reading
-. link:02-Getting-Setup.html[Getting Setup] - a quick tour of your environment and basic tool installation
-. link:03-AAP2-Backend-Setup.html[Setting up a Postgres Database for AAP2] - Check the requirements for a containerized standalone Postgres Database
-. link:04-AAP2-Installer-Inventory.html[Configuring the AAP2 Installer Inventory] - Going through the AAP2 inventory configuration file
-. link:05-Post-Install-Feature.html[Configuring the Postinstall feature] - Create the code needed for the AAP2 Configuration as Code Postinstall feature
-. link:06-Install-Your-Deployment.html[Install AAP2] - run the installer and explore the process
-. link:07-Explore-Your-Deployment.html[Explore your deployment] - Review the deployed workloads of your newly installed AAP2 instance 
-. link:Resources-and-Credentials.html[Resources and Credentials] In case you need the credentials and URLs needed for this Lab
 
 == Current Requirements
 
@@ -64,6 +53,11 @@ Our lab topology is quite simple and can be divided logically into 3 components:
 - One `bastion` host, the machine you will primarily work from.
 
 - Two VMs for Containerized AAP2 infrastructure, allowing for a 2-Tier deployment with a separate Postgres instance
+
+[INFO]
+====
+`2-Tier` deployment means we separate the database (Postgres) layer from the application (AAP) layer.
+====
 
 - Two target hosts to deploy a simple application as part of the lab. 
 
@@ -110,6 +104,19 @@ NOTE: All instances are running RHEL 9.3 and are sized appropriately for the lab
 == Containerized AAP2 Services and Ports
 
 ////
+
+[#modules]
+== The Lab Modules
+
+. link:01-Introduction.html[Introduction] - this document you are currently reading
+. link:02-Getting-Setup.html[Getting Setup] - a quick tour of your environment and basic tool installation
+. link:03-AAP2-Backend-Setup.html[Setting up a Postgres Database for AAP2] - Check the requirements for a containerized standalone Postgres Database
+. link:04-AAP2-Installer-Inventory.html[Configuring the AAP2 Installer Inventory] - Going through the AAP2 inventory configuration file
+. link:05-Post-Install-Feature.html[Configuring the Postinstall feature] - Create the code needed for the AAP2 Configuration as Code Postinstall feature
+. link:06-Install-Your-Deployment.html[Install AAP2] - run the installer and explore the process
+. link:07-Explore-Your-Deployment.html[Explore your deployment] - Review the deployed workloads of your newly installed AAP2 instance 
+. link:Resources-and-Credentials.html[Resources and Credentials] In case you need the credentials and URLs needed for this Lab
+
 
 [#resources]
 == Resources and Credentials 

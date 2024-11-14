@@ -1,5 +1,5 @@
 // :subdomain: aap2-01.sandbox5.opentlc.com
-= Configuring the Containerized AAP2 Installer Inventory
+= 4. Configuring the Containerized AAP2 Installer Inventory
 
 icon:clock-o[Duration: 15 Minutes] Duration: 15 minutes
 
@@ -184,7 +184,7 @@ Before overwriting, you can inspect the existing inventory file by using command
 ====
 Your machine, `bastion` comes with both `vim` and `nano` pre-installed but `mc` (Midnight Commander), `neovim`, and `emacs` are all available via `dnf` e.g. `sudo dnf install -y mc` etc. Please feel free to install your favorite editor.
 
-Those of you using Visual Studio Code on your laptops or similar are welcome to use the `ssh` vars in the link:Resources-and-Credentials.html[*Resources and Credentials*] Module for remote editing however setup and configuration are not covered in the lab.
+Those of you using Visual Studio Code on your laptops or similar are welcome to use the `ssh` vars in the link:Resources-and-Credentials.html[*Resources and Credentials*] Module for remote editing whatever setup and configuration are not covered in the lab.
 ====
 
 . Rename your inventory-growth file for editing using your editor of choice:
@@ -214,11 +214,19 @@ vim inventory
 . Configure the Groups for Gateway, Database, Controller, Hub, and EDA
 +
 
-As you can see the inventory is partially configured for a local install eg on a single local VM. However, in our case, we will be placing the gateway, controller, hub, and EDA on a single remote host, and the `postgresql` database in ahother host. Recall that we can distribute them more widely with 1 component per VM etc - the installer is very flexible.
+As you can see the inventory is partially configured for a local install on a single local VM. However, in our case, we will be placing the gateway, controller, hub, and EDA on a single remote host, and the `postgresql` database in ahother host. Recall that we can distribute them more widely with 1 component per VM etc - the installer is very flexible.
++
+
+[TIP]
+====
+All the variables for the `inventory` file are described in the documentaiton https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html-single/containerized_installation/index#inventory_file_for_online_installation_for_containerized_growth_topology_all_in_one[here]
+====
 +
 
 [NOTE]
+====
 In our example, all `ssh` is set up already, feel free to explore `/home/devops/.ssh/config` In many cases you may need to make changes either there or in the inventory file. A good simple test is `ansible all -m ping -i inventory` to validate configuration and ssg setup.
+====
 +
 
 [IMPORTANT]

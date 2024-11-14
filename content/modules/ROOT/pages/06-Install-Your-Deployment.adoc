@@ -1,4 +1,4 @@
-= Containerized AAP2 Installation
+= 6. Containerized AAP2 Installation
 
 icon:clock-o[Duration: 30-60 Minutes] Duration: 30-60 minutes
 
@@ -14,6 +14,8 @@ If you are swapping back and forth between the 2 terminals remember to ensure th
 ----
 export ANSIBLE_COLLECTIONS_PATH=/home/devops/ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64/collections
 ----
+
+By default `ansible` would not be able to find the collections inside the bundled installer, hence the need to set this explicitly.
 ====
 
 [Installation]
@@ -28,11 +30,6 @@ cd ~/ansible-automation-platform-containerized-setup-bundle-2.5-3-x86_64
 ----
 
 . Ensure your ANSIBLE_COLLECTIONS_PATH is set correctly
-+
-[NOTE]
-====
-By default `ansible` would not be able to find the collections inside the bundled installer, hence the need to set this explicitly.
-====
 +
 
 [source,sh,role=execute,subs=attributes+]
@@ -120,7 +117,7 @@ If you don't see the same output as printed before, wait a couple of seconds and
 
 [CHALLENGE]
 ====
-*Eigth Challenge:* Based on the previous command output solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#7%20-%20Copy/Paste%20the%20license%20for%20the%20infra.controller_configuration%20collection-40[Eight Challenge Link,window=read-later]
+*Eigth Challenge:* Based on the previous command output solve the challenge: https://red-hat-summit-connect-hands-on-day-2024.ctfd.io/challenges#8%20-%20Paste%20the%20last%20file%20name,%20replace%20the%20xxxxxx.xxxx%20with%20the%20right%20value-41[Eight Challenge Link,window=read-later]
 ====
 
 

@@ -1,5 +1,5 @@
 // :icons: font
-= Setting up a Postgres Database for AAP2
+= 3. Setting up a Postgres Database for AAP2
 
 icon:clock-o[Duration: 10 Minutes] Duration: 10 minutes
 
