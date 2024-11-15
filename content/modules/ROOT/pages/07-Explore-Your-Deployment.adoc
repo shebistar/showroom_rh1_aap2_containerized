@@ -1,4 +1,4 @@
-= 7. Explore and Use Containerized AAP2
+= 7. Explore your deployment
 
 We touched on the new Postinstall capability built on top of the `infra.controller_configuration` collection, in this Bonus final we will actually use the simple AAP2 job_template and associated resources. 
 

@@ -1,4 +1,4 @@
-= 5. Postinstall Capability
+= 5. Configuring the Postinstall feature
 
 icon:clock-o[Duration: 15 Minutes] Duration: 15 minutes
 

@@ -1,5 +1,5 @@
 // :subdomain: aap2-01.sandbox5.opentlc.com
-= 4. Configuring the Containerized AAP2 Installer Inventory
+= 4. Configuring the AAP2 Installer Inventory
 
 icon:clock-o[Duration: 15 Minutes] Duration: 15 minutes
 

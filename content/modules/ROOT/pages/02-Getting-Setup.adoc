@@ -2,7 +2,7 @@
 
 icon:clock-o[Duration: 10 Minutes] Duration: 10 minutes
 
-== 2. Explore your environment
+== 2. Getting Setup
 
 Several artifacts and tools have been installed for you. Let's take a look at what is available.
 

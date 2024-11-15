@@ -1,4 +1,4 @@
-= 6. Containerized AAP2 Installation
+= 6. Install AAP2
 
 icon:clock-o[Duration: 30-60 Minutes] Duration: 30-60 minutes
 
